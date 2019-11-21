@@ -1,0 +1,111 @@
+{
+  "connection": "default",
+  "collectionName": "listing",
+  "info": {
+    "name": "listing",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "state": {
+      "type": "string",
+      "required": true
+    },
+    "zipcode": {
+      "type": "string",
+      "required": true
+    },
+    "lot_size": {
+      "type": "decimal"
+    },
+    "neighborhood": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "bedrooms": {
+      "type": "integer",
+      "required": true,
+      "max": 50
+    },
+    "bathrooms": {
+      "type": "decimal",
+      "max": 50,
+      "required": true
+    },
+    "garage": {
+      "type": "decimal",
+      "max": 20,
+      "required": true
+    },
+    "square_feet": {
+      "type": "integer"
+    },
+    "basement": {
+      "type": "string"
+    },
+    "open_house_date": {
+      "type": "date"
+    },
+    "description": {
+      "type": "text"
+    },
+    "year_built": {
+      "type": "integer"
+    },
+    "heating": {
+      "type": "string"
+    },
+    "cooling": {
+      "type": "string"
+    },
+    "summer_tax": {
+      "type": "integer"
+    },
+    "winter_tax": {
+      "type": "integer"
+    },
+    "water": {
+      "type": "string"
+    },
+    "school_district": {
+      "type": "string"
+    },
+    "publish?": {
+      "type": "boolean"
+    },
+    "realtor": {
+      "model": "realtor"
+    },
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "cover_photo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    },
+    "heating_fuel": {
+      "required": true,
+      "type": "string"
+    },
+    "open_house_end_time": {
+      "type": "string"
+    }
+  }
+}

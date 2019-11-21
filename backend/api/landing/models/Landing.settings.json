@@ -1,0 +1,21 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "landing",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "landing_photo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "publish?": {
+      "type": "boolean"
+    }
+  }
+}

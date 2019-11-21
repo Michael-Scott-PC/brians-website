@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/listings",
+      "handler": "Listing.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/listings/count",
+      "handler": "Listing.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/listings/:_id",
+      "handler": "Listing.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/listings",
+      "handler": "Listing.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/listings/:_id",
+      "handler": "Listing.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/listings/:_id",
+      "handler": "Listing.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
