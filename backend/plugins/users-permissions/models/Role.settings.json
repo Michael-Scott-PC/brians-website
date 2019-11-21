@@ -32,6 +32,10 @@
       "via": "role",
       "configurable": false,
       "plugin": "users-permissions"
+    },
+    "undefined": {
+      "collection": "realtor",
+      "via": "role"
     }
   },
   "collectionName": "users-permissions_role"

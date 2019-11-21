@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/realtors",
+      "handler": "Realtor.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/realtors/count",
+      "handler": "Realtor.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/realtors/:_id",
+      "handler": "Realtor.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/realtors",
+      "handler": "Realtor.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/realtors/:_id",
+      "handler": "Realtor.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/realtors/:_id",
+      "handler": "Realtor.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
