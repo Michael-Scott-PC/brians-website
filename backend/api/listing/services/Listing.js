@@ -24,7 +24,7 @@ module.exports = {
     const filters = convertRestQueryParams(params);
     const populateOpt = populate || Listing.associations
       .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias)
+      .map(ast => ast.alias);
 
     return buildQuery({
       model: Listing,
@@ -64,7 +64,7 @@ module.exports = {
       model: Listing,
       filters: { where: filters.where },
     })
-      .count()
+      .count();
   },
 
   /**
@@ -97,6 +97,7 @@ module.exports = {
     const data = _.omit(values, Listing.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
+    // eslint-disable-next-line no-unused-vars
     const entry = await Listing.updateOne(params, data, { multi: true });
 
     // Update relational data and return the entry.

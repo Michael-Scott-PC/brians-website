@@ -1,11 +1,17 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
-function App() {
+import store from './store';
+import Realtors from './components/Realtors';
+import Landing from './components/layout/Landing';
+
+const App = () => {
   return (
-    <div className="App">
-      App Component
-    </div>
+    <Provider store={store}>
+      <Landing />
+      <Realtors />
+    </Provider>
   );
-}
+};
 
 export default App;
