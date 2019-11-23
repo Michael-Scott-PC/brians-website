@@ -1,3 +1,4 @@
+import './Landing.css';
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,13 +11,11 @@ const Landing = ({ getLandingImage, landing: { landing } }) => {
 
   return (
     <Fragment>
-      <h1>Landing Component</h1>
       <img
-        className='ui fluid image'
+        className='img-fluid'
         src={`http://localhost:1337${landing}`}
         alt=''
       />
-      <p>{landing}</p>
     </Fragment>
   );
 };

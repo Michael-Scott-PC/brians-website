@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getRealtors } from '../actions/realtor';
-import store from '../store';
+import { getRealtors } from '../../actions/realtor';
+import store from '../../store';
 import PropTypes from 'prop-types';
 
 const Realtors = () => {
