@@ -1,5 +1,5 @@
 @media (min-width: 576px) {
-    img.img-fluid {
+    .landing.img.img-fluid {
         margin-top: -70px;
     }
 }

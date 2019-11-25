@@ -22,15 +22,15 @@ const Footer = ({ getBrianInfo, brian: { brian } }) => {
     office_phone
   } = brian;
 
-  console.log(facebook);
-  console.log(instagram);
-  console.log(linkedin);
-  console.log(twitter);
+  // console.log(facebook);
+  // console.log(instagram);
+  // console.log(linkedin);
+  // console.log(twitter);
 
   return (
     <Fragment>
       <footer className='footer'>
-        <div className='container-fluid pt-3'>
+        <div className='foot container-fluid pt-3'>
           <div className='row text-center mb-1'>
             <div className='col-sm-12 mt-4'>
               <a href={`${linkedin}`}>
