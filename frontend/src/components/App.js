@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 
 //import Navbar from '../components/layout/Navbar';
 import Home from '../components/pages/Home';
-//import Realtors from './realtors/Realtors';
+import Footer from '../components/layout/Footer';
 
 import history from '../history';
 
@@ -13,6 +13,7 @@ const App = () => {
       <Switch>
         <Route path='/' exact component={Home} />
       </Switch>
+      <Footer />
     </Router>
   );
 };

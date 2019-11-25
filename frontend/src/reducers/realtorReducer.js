@@ -1,7 +1,7 @@
-import { GET_REALTOR, GET_REALTORS } from '../actions/types';
+import { GET_BRIAN, GET_REALTORS } from '../actions/types';
 
 const initialState = {
-  realtor: [],
+  brian: [],
   realtors: [],
   loading: true,
   errors: {}
@@ -11,10 +11,10 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_REALTOR:
+    case GET_BRIAN:
       return {
         ...state,
-        realtor: payload,
+        brian: payload,
         loading: false
       };
     case GET_REALTORS:
