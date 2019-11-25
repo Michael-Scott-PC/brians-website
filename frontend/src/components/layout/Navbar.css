@@ -1,7 +1,11 @@
 .navbar {
     background-color: rgb(58, 74, 123);
-    height: 100px;
+    height: 110px;
     width: 100%;
+}
+
+.collapse {
+    top: 110px;
 }
 
 .skyline {

@@ -12,7 +12,7 @@ const About = ({ getBrianInfo, brian: { brian } }) => {
 
   return (
     <Fragment>
-      <div className='container'>
+      <div className='container-fluid'>
         {brian === null || brian.loading ? (
           <div className='loading'>Loading...</div>
         ) : (

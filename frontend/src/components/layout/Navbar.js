@@ -58,7 +58,7 @@ const Navbar = ({ changeClass, toggle }) => {
           alt='detroit skyline outline'
         />
       </nav>
-      <div className='collapse' id='navbarToggleExternalContent'>
+      <div className='collapse sticky-top' id='navbarToggleExternalContent'>
         <Link to='/' className='dropdown-item pt-4'>
           Home
         </Link>
