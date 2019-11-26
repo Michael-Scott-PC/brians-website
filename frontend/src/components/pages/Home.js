@@ -1,3 +1,4 @@
+import './Home.css';
 import React, { Fragment } from 'react';
 
 import About from '../realtor/About';
@@ -12,7 +13,7 @@ const Home = () => {
     <Fragment>
       <Navbar />
       <Landing />
-      <div className='container'>
+      <div className='rec-listings mortg-calc container-fluid'>
         <div className='row'>
           <RecentListing />
           <MortgageCalculator />
