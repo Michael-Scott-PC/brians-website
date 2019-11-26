@@ -1,5 +1,4 @@
 .testimonials.container {
-    border: 1px solid green;
-    background-color: lightgreen;
+    background-image: url(../../img/testimonial/purple.png);
     height: 250px;
 }

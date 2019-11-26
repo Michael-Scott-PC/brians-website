@@ -4,7 +4,9 @@ import React, { Fragment } from 'react';
 const RecentListing = () => {
   return (
     <Fragment>
-      <div className='recent-listing col-8'>Most Recent Listing Component</div>
+      <div className='recent-listing col-12 col-md-8'>
+        Most Recent Listing Component
+      </div>
     </Fragment>
   );
 };

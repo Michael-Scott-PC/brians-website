@@ -20,21 +20,21 @@ const About = ({
 
   const { about, loading } = brian;
 
-  //   console.log(brian);
-  //   console.log(brian_headshot_url);
   if (!about) {
     return null;
   } else {
-    const jsx_about = render(
-      <Markdown>{about}</Markdown>,
-      document.getElementById('root')
-    );
+    setTimeout(function() {
+      render(<Markdown>{about}</Markdown>, document.getElementById('markup'));
+    }, 500);
   }
 
   return (
     <Fragment>
-      <div className='about container-fluid pt-4'>
-        {brian === null || brian_headshot_url === null || loading ? (
+      <div className='about container-fluid pt-5 pb-5'>
+        {brian === null ||
+        brian_headshot_url === null ||
+        about === null ||
+        loading ? (
           <Spinner />
         ) : (
           <div className='card'>
@@ -44,7 +44,7 @@ const About = ({
                 ABOUT BRIAN
                 <span className='underline d-block mx-auto'></span>
               </h2>
-              <div className='card-text'>{about}</div>
+              <div id='markup' className='about card-text text-center'></div>
             </div>
           </div>
         )}

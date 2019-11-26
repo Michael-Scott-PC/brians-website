@@ -1,11 +1,25 @@
 
 
 .about.container-fluid {
-    background-color: #676F97;
+    /* background: linear-gradient(120deg, #676F97, rgba(176, 218, 232, 0.35));
+    background: linear-gradient(135deg, #676F97, rgba(0, 0, 255, 0) 50%),
+                linear-gradient(190deg, #9198e5, rgba(197, 200, 230, 0) 50%),
+                linear-gradient(0deg, #9198e5, rgba(16, 177, 189, 0) 50%);  */
+    background: linear-gradient(300deg,rgba(0, 0, 255, 0) 40%, #676F97),
+                linear-gradient(45deg,rgba(197, 200, 230, 0) 40%, #a982ce),
+                linear-gradient(180deg, rgba(16, 177, 189, 0) 40%, #9198e5);
+}
+
+.card {
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 255, .2);
+    background-color: unset;
 }
 
 .about.card-body {
     background-color: #B8B3BE;
+    background: linear-gradient(268deg, rgba(255, 255, 255, 0) 10%, #ECECEC),
+                linear-gradient(92deg, rgba(255, 255, 255, 0) 10%, #ECECEC),
+                linear-gradient(0deg, rgba(255, 255, 255, 0) 94%, #070707);
     margin-bottom: 0;
     color: #1F475B;
 }
@@ -20,4 +34,9 @@ span.underline {
     background-color: #000000;
     width: 80px;
     height: 3px;
+}
+
+div#markup p {
+    color: #1F475B;
+    font-size: 1.45em;
 }
