@@ -1,10 +1,4 @@
-
-
 .about.container-fluid {
-    /* background: linear-gradient(120deg, #676F97, rgba(176, 218, 232, 0.35));
-    background: linear-gradient(135deg, #676F97, rgba(0, 0, 255, 0) 50%),
-                linear-gradient(190deg, #9198e5, rgba(197, 200, 230, 0) 50%),
-                linear-gradient(0deg, #9198e5, rgba(16, 177, 189, 0) 50%);  */
     background: linear-gradient(300deg,rgba(0, 0, 255, 0) 40%, #676F97),
                 linear-gradient(45deg,rgba(197, 200, 230, 0) 40%, #a982ce),
                 linear-gradient(180deg, rgba(16, 177, 189, 0) 40%, #9198e5);
@@ -39,4 +33,27 @@ span.underline {
 div#markup p {
     color: #1F475B;
     font-size: 1.45em;
+}
+
+@media (min-width: 768px) {
+    /* img.brian {
+        width: 85%;
+    } */
+    .about.container-fluid {
+        padding-right: 90px !important;
+        padding-left: 90px !important;
+        padding-top: 125px !important;
+        padding-bottom: 125px !important;
+    }
+    .about.card-body {
+        background-color: #B8B3BE;
+        background: linear-gradient(268deg, rgba(255, 255, 255, 0) 10%, #ECECEC),
+                    linear-gradient(92deg, rgba(255, 255, 255, 0) 10%, #ECECEC),
+                    linear-gradient(0deg, rgba(255, 255, 255, 0) 85%, #070707);
+        height: 100%;
+    }
+    div#markup p {
+        color: #1F475B;
+        font-size: .9em;
+    }
 }

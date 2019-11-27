@@ -30,7 +30,7 @@ const About = ({
 
   return (
     <Fragment>
-      <div className='about container-fluid pt-5 pb-5'>
+      <div className='about container-fluid px-3 py-5'>
         {brian === null ||
         brian_headshot_url === null ||
         about === null ||
@@ -38,13 +38,25 @@ const About = ({
           <Spinner />
         ) : (
           <div className='card'>
-            <img src={brian_headshot_url} alt='' className='card-img-top' />
-            <div className='about card-body'>
-              <h2 className='about card-title text-center'>
-                ABOUT BRIAN
-                <span className='underline d-block mx-auto'></span>
-              </h2>
-              <div id='markup' className='about card-text text-center'></div>
+            <div className='row no-gutters'>
+              <div className='col-md-4'>
+                <img
+                  src={brian_headshot_url}
+                  alt=''
+                  className='brian card-img-top'
+                />
+              </div>
+              <div className='col-md-8'>
+                <div className='about card-body'>
+                  <h2 className='about card-title text-center'>
+                    ABOUT BRIAN
+                    <span className='underline d-block mx-auto'></span>
+                  </h2>
+                  <div
+                    id='markup'
+                    className='about card-text text-center'></div>
+                </div>
+              </div>
             </div>
           </div>
         )}
