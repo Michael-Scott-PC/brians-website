@@ -34,6 +34,10 @@ div.testimonials.row {
     padding-top: 5px;
 }
 
+.carousel-item {
+    font-size: 80%;
+}
+
 @media (min-width: 768px) {
     div.testimonials.row {
         background-image: url(../../img/testimonial/desktop_purple_1265w_650h.png);
