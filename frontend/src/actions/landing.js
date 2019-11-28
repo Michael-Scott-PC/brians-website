@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from '../api/axios';
 import { GET_LANDING_IMG } from './types';
 
 export const getLandingImage = () => async dispatch => {

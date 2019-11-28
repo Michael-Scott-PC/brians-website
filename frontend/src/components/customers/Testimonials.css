@@ -1,7 +1,7 @@
 div.testimonials.row {
     background-image: url(../../img/testimonial/purple.png);
     background-size: cover;
-    height: 40vh;
+    height: 50vh;
     /* display: unset; */
 }
 
@@ -35,7 +35,7 @@ div.testimonials.row {
 }
 
 .carousel-item {
-    font-size: 80%;
+    font-size: 90%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 

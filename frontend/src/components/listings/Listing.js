@@ -18,13 +18,13 @@ const Listing = props => {
             8031 Longworth Street <br /> Detroit, MI 48209
           </h4>
           <p className='info'>
-            <i class='fab fa-microsoft'></i> Sqft: 1,323
+            <i class='fab fa-microsoft mr-2'></i> Sqft: 1,323
           </p>
           <p className='info'>
-            <i class='fas fa-bath'></i> Bathrooms: 2
+            <i class='fas fa-bath mr-2'></i> Bathrooms: 2
           </p>
           <p className='info'>
-            <i class='fas fa-bed'></i> Bedroom: 4
+            <i class='fas fa-bed mr-2'></i> Bedroom: 4
           </p>
           <a href='#' className='info btn'>
             More Info

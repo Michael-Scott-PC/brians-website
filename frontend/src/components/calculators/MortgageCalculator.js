@@ -1,7 +1,17 @@
 import './MortgageCalculator.css';
 import React, { Fragment } from 'react';
+import axios from 'axios';
+// import zillow from '../../api/zillow';
 
 const MortgageCalculator = () => {
+  // axios({
+  //   method: 'get',
+  //   url: 'https://mortgageapi.zillow.com/getCurrentRates',
+  //   params: {
+  //     partnerId: `${process.env.REACT_APP_PARTNER_ID}`
+  //   }
+  // });
+
   return (
     <Fragment>
       <div className='mortgage-calculator col-12 col-md-4 py-5'>

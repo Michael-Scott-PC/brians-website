@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from '../api/axios';
 
 import { GET_BRIAN, GET_REALTORS, GET_BRIAN_HEADSHOT } from './types';
 
