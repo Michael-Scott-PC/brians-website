@@ -22,13 +22,15 @@ const Testimonials = ({
       <div className='testimonials container-fluid'>
         <div className='testimonials row'>
           <Carousel className='text-center align-self-center px-3'>
-            {testimonials.map((testimonial, textFit) => (
+            {testimonials.map(testimonial => (
               <Carousel.Item key={testimonial._id}>
                 <i className='fas fa-quote-left'></i>
                 {testimonial.client_testimonial}
                 <i className='fas fa-quote-right'></i>
                 <footer className='blockquote-footer'>
-                  <cite title='Source Title'>{testimonial.client_name}</cite>
+                  <cite className='cite-name' title='Source Title'>
+                    {testimonial.client_name}
+                  </cite>
                 </footer>
               </Carousel.Item>
             ))}
@@ -38,28 +40,6 @@ const Testimonials = ({
     </Fragment>
   );
 };
-
-//   return (
-//     <Fragment>
-//       <div className='testimonials container-fluid'>
-//         <div className='testimonials row'>
-//           <Carousel className='text-center align-self-center px-3'>
-//             {testimonials.map(testimonial => (
-//               <Carousel.Item key={testimonial._id}>
-//                 <i className='fas fa-quote-left'></i>
-//                 {testimonial.client_testimonial}
-//                 <i className='fas fa-quote-right'></i>
-//                 <footer className='blockquote-footer'>
-//                   <cite title='Source Title'>{testimonial.client_name}</cite>
-//                 </footer>
-//               </Carousel.Item>
-//             ))}
-//           </Carousel>
-//         </div>
-//       </div>
-//     </Fragment>
-//   );
-// };
 
 Testimonials.propTypes = {
   getTestimonials: PropTypes.func.isRequired,
