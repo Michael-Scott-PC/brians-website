@@ -1,13 +1,15 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// const PARTNER_ID = process.env.REACT_APP_PARTNER_ID;
+export default axios.create({
+  baseURL: 'https://mortgageapi.zillow.com/getCurrentRates'
+});
 
-// const zillow = axios({
-//   method: 'get',
-//   url: 'https://mortgageapi.zillow.com/getCurrentRates',
-//   params: {
-//     partnerId: PARTNER_ID
-//   }
-// });
+// const zillow = () => {
+//   axios.get('https://mortgageapi.zillow.com/getCurrentRates', {
+//     params: {
+//       partnerId: `${process.env.REACT_APP_PARTNER_ID}`
+//     }
+//   });
+// };
 
 // export default zillow;

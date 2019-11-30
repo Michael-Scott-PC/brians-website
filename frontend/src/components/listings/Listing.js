@@ -1,6 +1,6 @@
 import './Listing.css';
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Longworth from '../../img/placeholders/longworth_cover.jpg';
 
 const Listing = props => {
@@ -26,7 +26,7 @@ const Listing = props => {
           <p className='info'>
             <i class='fas fa-bed mr-2'></i> Bedroom: 4
           </p>
-          <a href='#' className='info btn'>
+          <a href='!#' className='info btn'>
             More Info
           </a>
         </div>
@@ -35,6 +35,6 @@ const Listing = props => {
   );
 };
 
-Listing.propTypes = {};
+// Listing.propTypes = {};
 
 export default Listing;

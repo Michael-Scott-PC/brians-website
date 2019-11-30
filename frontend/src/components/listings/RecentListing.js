@@ -1,6 +1,5 @@
 import './RecentListing.css';
 import React, { Fragment } from 'react';
-import Longworth from '../../img/placeholders/longworth_cover.jpg';
 import Listing from './Listing';
 
 const RecentListing = () => {

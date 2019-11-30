@@ -36,9 +36,10 @@ div#markup p {
 }
 
 @media (min-width: 768px) {
-    /* img.brian {
-        width: 85%;
-    } */
+    img.brian {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 4px;
+    }
     .about.container-fluid {
         padding-right: 90px !important;
         padding-left: 90px !important;

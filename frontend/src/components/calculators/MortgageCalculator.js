@@ -4,13 +4,24 @@ import axios from 'axios';
 // import zillow from '../../api/zillow';
 
 const MortgageCalculator = () => {
-  // axios({
-  //   method: 'get',
-  //   url: 'https://mortgageapi.zillow.com/getCurrentRates',
-  //   params: {
-  //     partnerId: `${process.env.REACT_APP_PARTNER_ID}`
-  //   }
-  // });
+  // console.log(process.env.REACT_APP_PARTNER_ID);
+
+  // axios
+  //   .get('https://mortgageapi.zillow.com/getCurrentRates', {
+  //     params: {
+  //       partnerId: process.env.REACT_APP_PARTNER_ID,
+  //       queries: {
+  //         propertyBucket: {
+  //           location: {
+  //             zipCode: '48195'
+  //           }
+  //         }
+  //       }
+  //     }
+  //   })
+  //   .then(function(results) {
+  //     console.log(results);
+  //   });
 
   return (
     <Fragment>
@@ -40,7 +51,7 @@ const MortgageCalculator = () => {
                 <input type='' className='form-control' placeholder='' />
               </div>
             </div>
-            <a href='#' className='calculate btn my-4'>
+            <a href='!#' className='calculate btn my-4'>
               Calculate
             </a>
             <div>
