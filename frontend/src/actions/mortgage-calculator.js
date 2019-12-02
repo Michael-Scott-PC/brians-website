@@ -1,4 +1,4 @@
-import axios from '../api/axios';
+import axios from '../api/axiosStrapi';
 
 import { GET_CURRENT_MORTGAGE_RATES } from './types';
 

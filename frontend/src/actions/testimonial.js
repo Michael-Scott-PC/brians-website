@@ -1,5 +1,5 @@
 import { GET_TESTIMONIALS } from './types';
-import axios from '../api/axios';
+import axios from '../api/axiosStrapi';
 
 export const getTestimonials = () => async dispatch => {
   try {

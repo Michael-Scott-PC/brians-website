@@ -25,9 +25,13 @@ label {
 }
 
 .estimate {
-    width: 50%;
+    width: 75%;
 }
 
 p.zillow {
     color: #000000;
+}
+
+select#inputState {
+    text-align-last: center;
 }
