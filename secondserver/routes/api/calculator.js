@@ -6,55 +6,59 @@ const { check, validationResult } = require('express-validator');
 const { nested_encoder } = require('../../utils/nested_encoder');
 
 // @route  GET api/calculator
-// @desc   Get current rates
+// @desc   Get current Mortgage rate and APR
 // @access Public
 router.get('/', async (req, res) => {
   // TODO put in form data checks on the backend w/ express validator
-  const getCircularReplacer = () => {
-    const seen = new WeakSet();
-    return (key, value) => {
-      if (typeof value === 'object' && value !== null) {
-        if (seen.has(value)) {
-          return;
+
+  const params = {
+    partnerId: config.get('partnerId'),
+    queries: {
+      stateAbbreviation: req.query.stateAbbr,
+      program: req.query.program,
+      loanType: req.query.loanType,
+      creditScoreBucket: req.query.creditScore,
+      loanAmountBucket: req.query.loanAmountBucket,
+      loanToValueBucket: req.query.loanToValueBucket,
+      // This member overrides the "stateAbbreviation", "loanAmountBucket",
+      // and "loanToValueBucket" members.
+      propertyBucket: {
+        propertyValue: req.query.propertyValue,
+        loanAmount: req.query.loanAmount,
+        location: {
+          zipCode: req.query.zipcode
         }
-        seen.add(value);
       }
-      return value;
-    };
+    }
   };
 
-  const circulur_rep = JSON.stringify(req.query, getCircularReplacer());
-  console.log(circulur_rep);
   try {
-    const paramss = {
-      partnerId: config.get('partnerId'),
-      queries: {
-        stateAbbreviation: `${req.query.stateAbbr}`,
-        // program: "Fixed15Year",
-        // creditScoreBucket: "High",
-        // This member overrides the "stateAbbreviation", "loanAmountBucket",
-        // and "loanToValueBucket" members.
-        propertyBucket: {
-          propertyValue: req.query.propertyValue,
-          loanAmount: req.query.loanAmount
-          //   location: {
-          //     zipCode: "48195"
-          //   }
-        }
+    const first_step = nested_encoder(params);
+
+    const remove_repeating_ampersands = str => {
+      return str.replace(/&&&/gi, '&');
+    };
+
+    const second_step = remove_repeating_ampersands(first_step);
+
+    const remove_end_ampersand = str => {
+      if (str.endsWith('&')) {
+        new_str = str.slice(0, -1);
+        return remove_end_ampersand(new_str);
+      } else {
+        return str;
       }
     };
-    const encoded_string = nested_encoder(paramss);
+
+    const fin_step = remove_end_ampersand(second_step);
+
     const options = {
-      uri: `https://mortgageapi.zillow.com/getCurrentRates?${encoded_string}`,
+      uri: `https://mortgageapi.zillow.com/getCurrentRates?${fin_step}`,
       method: 'GET'
     };
 
     request(options, (error, response, body) => {
-      console.log(options);
-      // console.log('OPTIONS: ' + typeof(options.params));
-      // console.log('OPTIONS: ' + typeof(options.params.partnerId));
-      // console.log('RESPONSE: ' + response);
-      //   console.log('BODY: ' + body);
+      console.log('OPTIONS: ', options);
       if (error) console.log(error);
 
       if (response.statusCode !== 200) {
@@ -64,11 +68,10 @@ router.get('/', async (req, res) => {
           .status(response.statusCode)
           .json({ msg: response.statusMessage });
       }
-      console.log('RESPONSE TO JSON: ' + response.toJSON());
       res.json(JSON.parse(body));
     });
   } catch (error) {
-    console.log(error.message);
+    console.log('ERROR.MESSAGE: ' + error.message);
     res.status(500).send('Server Error');
   }
 });

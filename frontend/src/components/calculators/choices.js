@@ -1,4 +1,5 @@
 export const state_choices = {
+  'default(US)': 'US',
   US: 'US',
   AL: 'AL',
   AK: 'AK',
@@ -53,12 +54,26 @@ export const state_choices = {
   WY: 'WY'
 };
 
+// export const programs = {
+//   '30-Year Fixed': 'Fixed30Year',
+//   '30-Year Fixed FHA': 'Fixed30Year',
+//   '30-Year Fixed VA': 'Fixed30Year',
+//   '15-Year Fixed': 'Fixed15Year',
+//   '5-Year ARM': 'ARM5'
+// };
+
 export const programs = {
-  '30-Year Fixed': 'Fixed30Year',
-  '30-Year Fixed FHA': { program: 'Fixed30Year', type: 'FHA' },
-  '30-Year Fixed VA': { program: 'Fixed30Year', type: 'VA' },
-  '15-Year Fixed': 'Fixed15Year',
-  '5-Year ARM': 'ARM5'
+  '30-Year Fixed': '30-Year Fixed',
+  '30-Year Fixed FHA': '30-Year Fixed FHA',
+  '30-Year Fixed VA': '30-Year Fixed VA',
+  '15-Year Fixed': '15-Year Fixed',
+  '5-Year ARM': '5-Year ARM'
+};
+
+export const loanTypes = {
+  Conventional: 'Conventional',
+  FHA: 'FHA',
+  VA: 'VA'
 };
 
 // export const credit_range = {
@@ -68,4 +83,9 @@ export const programs = {
 //   '740': 'VeryHigh'
 // };
 
-export const credit_range = ['default', '<680', '680-740', '740'];
+export const credit_range = {
+  'default(=>740)': 'VeryHigh',
+  'equal to or less than 680': 'Low',
+  '680-740': 'High',
+  'equal to or greater than 740': 'VeryHigh'
+};

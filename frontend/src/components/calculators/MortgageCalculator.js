@@ -1,32 +1,70 @@
 import './MortgageCalculator.css';
-import React, { Fragment, useState, useRef } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import axiosSecondServer from '../../api/axiosSecondServer';
 import { Overlay } from 'react-bootstrap';
-import { state_choices, programs, credit_range } from './choices';
+import { state_choices, programs, credit_range, loanTypes } from './choices';
 
 const MortgageCalculator = () => {
+  // Tooltip overlays to help end users format calculator data properly
   const [showValueOverlay, setShowValOverlay] = useState(false);
   const targetValue = useRef(null);
   const [showLoanOverlay, setShowLoanOverlay] = useState(false);
   const targetLoan = useRef(null);
   const [showLocationOverlay, setShowLocOverlay] = useState(false);
   const targetLocation = useRef(null);
+  const [showStateOverlay, setShowStateOverlay] = useState(false);
+  const targetState = useRef(null);
 
+  // Set the calculator values from the input fields &
+  // use the defaults specified by Zillow API in case no onChange is triggered
+  // Remove null values from paramss object on backend
   const [propertyValue, setPropertyVal] = useState(null);
   const [loanAmount, setLoanAmount] = useState(null);
   const [stateAbbr, setStateAbbr] = useState('US');
   const [zipcode, setZipcode] = useState(null);
+  const [creditScore, setCreditScore] = useState('VeryHigh');
+  const [program, setProgram] = useState('Fixed30Year');
+  const [loanType, setLoanType] = useState('Conventional');
+  const [loanToValueBucket] = useState('Normal');
+  const [loanAmountBucket] = useState('Conforming');
+  // const [program, setProgram] = useState('Fixed30Year');
 
+  // Set the current rate and APR values returned from Zillow API
   const [currentRate, setCurrentRate] = useState(0);
   const [currentApr, setCurrentApr] = useState(0);
+
+  useEffect(() => {
+    if (program === '30-Year Fixed') {
+      setProgram('Fixed30Year');
+      setLoanType('Conventional');
+    } else if (program === '30-Year Fixed FHA') {
+      setProgram('Fixed30Year');
+      setLoanType('FHA');
+    } else if (program === '30-Year Fixed VA') {
+      setProgram('Fixed30Year');
+      setLoanType('VA');
+    } else if (program === '15-Year Fixed') {
+      setProgram('Fixed15Year');
+      setLoanType('Conventional');
+    } else if (program === '5-Year ARM') {
+      setProgram('ARM5');
+      setLoanType('Conventional');
+    }
+    console.log('update ran.');
+  }, [program]);
 
   const getCurrentRates = async () => {
     try {
       const res = await axiosSecondServer.get('/api/calculator/', {
         params: {
+          stateAbbr,
+          program,
+          loanType,
+          creditScore,
+          loanAmountBucket,
+          loanToValueBucket,
           propertyValue,
           loanAmount,
-          stateAbbr,
           zipcode
         }
       });
@@ -40,7 +78,6 @@ const MortgageCalculator = () => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    console.log('onFormSubmit ran');
 
     getCurrentRates();
   };
@@ -147,9 +184,41 @@ const MortgageCalculator = () => {
                 <select
                   onChange={e => setStateAbbr(e.target.value)}
                   id='inputState'
-                  className='form-control'>
+                  className='form-control'
+                  ref={targetState}
+                  onClick={() => setShowStateOverlay(!showStateOverlay)}
+                  onMouseLeave={() => setShowStateOverlay(!showStateOverlay)}>
+                  <Overlay
+                    target={targetState.current}
+                    show={showStateOverlay}
+                    placement='right'>
+                    {({
+                      placement,
+                      scheduleUpdate,
+                      arrowProps,
+                      outOfBoundaries,
+                      show: _show,
+                      ...props
+                    }) => (
+                      <div
+                        {...props}
+                        style={{
+                          backgroundColor: '#aaceaa',
+                          padding: '2px 10px',
+                          color: 'white',
+                          borderRadius: 3,
+                          ...props.style
+                        }}>
+                        Leaving State as "US" &amp; Zipcode blank will return
+                        national averages.
+                      </div>
+                    )}
+                  </Overlay>
                   {Object.keys(state_choices).map(state => (
-                    <option key={state} defaultValue>
+                    <option
+                      key={state}
+                      value={state_choices[state]}
+                      defaultValue>
                       {state}
                     </option>
                   ))}
@@ -161,7 +230,7 @@ const MortgageCalculator = () => {
                 Or
               </p>
               <div className='form-group col'>
-                <label htmlFor='zipcode'>Zipcode</label>
+                <label htmlFor='zipcode'>Zip Code</label>
                 <input
                   type='number'
                   className='form-control text-center'
@@ -193,8 +262,8 @@ const MortgageCalculator = () => {
                         borderRadius: 3,
                         ...props.style
                       }}>
-                      Leaving State as "US" &amp; Zipcode blank will return
-                      national averages.
+                      If you enter a zip code, you must enter the Property Value
+                      &amp; Loan Amount fields.
                     </div>
                   )}
                 </Overlay>
@@ -203,9 +272,15 @@ const MortgageCalculator = () => {
             <div className='row mx-2'>
               <div className='form-group col mb-3'>
                 <label htmlFor='program'>Program</label>
-                <select id='inputState' className='form-control'>
+                <select
+                  onChange={e => setProgram(e.target.value)}
+                  id='inputState'
+                  className='form-control'>
                   {Object.keys(programs).map(program => (
-                    <option key={program} defaultValue>
+                    <option
+                      value={programs[program]}
+                      key={program}
+                      defaultValue>
                       {program}
                     </option>
                   ))}
@@ -213,9 +288,15 @@ const MortgageCalculator = () => {
               </div>
               <div className='form-group col mb-3'>
                 <label htmlFor='credit-range'>Credit Range</label>
-                <select id='inputState' className='form-control'>
-                  {credit_range.map(range => (
-                    <option key={range} defaultValue>
+                <select
+                  onChange={e => setCreditScore(e.target.value)}
+                  id='inputState'
+                  className='form-control'>
+                  {Object.keys(credit_range).map(range => (
+                    <option
+                      key={range}
+                      value={credit_range[range]}
+                      defaultValue>
                       {range}
                     </option>
                   ))}
