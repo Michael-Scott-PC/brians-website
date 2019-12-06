@@ -1,8 +1,9 @@
 import './MortgageCalculator.css';
 import React, { Fragment, useState, useRef, useEffect } from 'react';
-import axiosSecondServer from '../../api/axiosSecondServer';
 import { Overlay } from 'react-bootstrap';
-import { state_choices, programs, credit_range, loanTypes } from './choices';
+import axiosSecondServer from '../../api/axiosSecondServer';
+import { state_choices, programs, credit_range } from './choices';
+import validateCalculator from './validateCalculator';
 
 const MortgageCalculator = () => {
   // Tooltip overlays to help end users format calculator data properly
@@ -17,7 +18,7 @@ const MortgageCalculator = () => {
 
   // Set the calculator values from the input fields &
   // use the defaults specified by Zillow API in case no onChange is triggered
-  // Remove null values from paramss object on backend
+  // Remove null values from params object on backend
   const [propertyValue, setPropertyVal] = useState(null);
   const [loanAmount, setLoanAmount] = useState(null);
   const [stateAbbr, setStateAbbr] = useState('US');
@@ -27,31 +28,14 @@ const MortgageCalculator = () => {
   const [loanType, setLoanType] = useState('Conventional');
   const [loanToValueBucket] = useState('Normal');
   const [loanAmountBucket] = useState('Conforming');
-  // const [program, setProgram] = useState('Fixed30Year');
+
+  // error validation for calculator
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Set the current rate and APR values returned from Zillow API
   const [currentRate, setCurrentRate] = useState(0);
   const [currentApr, setCurrentApr] = useState(0);
-
-  useEffect(() => {
-    if (program === '30-Year Fixed') {
-      setProgram('Fixed30Year');
-      setLoanType('Conventional');
-    } else if (program === '30-Year Fixed FHA') {
-      setProgram('Fixed30Year');
-      setLoanType('FHA');
-    } else if (program === '30-Year Fixed VA') {
-      setProgram('Fixed30Year');
-      setLoanType('VA');
-    } else if (program === '15-Year Fixed') {
-      setProgram('Fixed15Year');
-      setLoanType('Conventional');
-    } else if (program === '5-Year ARM') {
-      setProgram('ARM5');
-      setLoanType('Conventional');
-    }
-    console.log('update ran.');
-  }, [program]);
 
   const getCurrentRates = async () => {
     try {
@@ -76,10 +60,35 @@ const MortgageCalculator = () => {
     }
   };
 
+  useEffect(() => {
+    if (program === '30-Year Fixed') {
+      setProgram('Fixed30Year');
+      setLoanType('Conventional');
+    } else if (program === '30-Year Fixed FHA') {
+      setProgram('Fixed30Year');
+      setLoanType('FHA');
+    } else if (program === '30-Year Fixed VA') {
+      setProgram('Fixed30Year');
+      setLoanType('VA');
+    } else if (program === '15-Year Fixed') {
+      setProgram('Fixed15Year');
+      setLoanType('Conventional');
+    } else if (program === '5-Year ARM') {
+      setProgram('ARM5');
+      setLoanType('Conventional');
+    }
+    console.log('useEffect ran.');
+    setErrors(validateCalculator(propertyValue, loanAmount, zipcode));
+  }, [program, propertyValue, loanAmount, zipcode]);
+
   const onFormSubmit = e => {
     e.preventDefault();
 
-    getCurrentRates();
+    setIsSubmitting(true);
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      getCurrentRates();
+      console.log('errors object empty. getCurrentRates ran.');
+    }
   };
 
   return (
@@ -88,8 +97,9 @@ const MortgageCalculator = () => {
         <div className='mortgage card text-center'>
           <div className='calculator card-title mt-4'>
             <h3>Mortgage Calculator</h3>
+            <h3>Errors Object: {Object.keys(errors).length}</h3>
           </div>
-          <form onSubmit={onFormSubmit}>
+          <form onSubmit={onFormSubmit} noValidate>
             <div className='row mx-2 mb-3'>
               <div className='form-group col'>
                 <label htmlFor='home-price'>Property Value &#40;$&#41;</label>
@@ -98,7 +108,8 @@ const MortgageCalculator = () => {
                     <span className='input-group-text'>$</span>
                   </div>
                   <input
-                    type='number'
+                    type='text'
+                    name='home-price'
                     id='inlineFormInputGroup'
                     className='form-control'
                     placeholder=''
@@ -107,6 +118,7 @@ const MortgageCalculator = () => {
                     onMouseEnter={() => setShowValOverlay(!showValueOverlay)}
                     onMouseLeave={() => setShowValOverlay(!showValueOverlay)}
                   />
+                  <p style={{ color: 'red' }}>{errors.propertyValue}</p>
                   <Overlay
                     target={targetValue.current}
                     show={showValueOverlay}
@@ -141,7 +153,8 @@ const MortgageCalculator = () => {
                     <span className='input-group-text'>$</span>
                   </div>
                   <input
-                    type='number'
+                    type='text'
+                    name='loan-amount'
                     id='inlineFormInputGroup'
                     className='form-control'
                     placeholder=''
@@ -150,6 +163,7 @@ const MortgageCalculator = () => {
                     onMouseEnter={() => setShowLoanOverlay(!showLoanOverlay)}
                     onMouseLeave={() => setShowLoanOverlay(!showLoanOverlay)}
                   />
+                  <p style={{ color: 'red' }}>{errors.loanAmount}</p>
                   <Overlay
                     target={targetLoan.current}
                     show={showLoanOverlay}
@@ -232,7 +246,8 @@ const MortgageCalculator = () => {
               <div className='form-group col'>
                 <label htmlFor='zipcode'>Zip Code</label>
                 <input
-                  type='number'
+                  type='text'
+                  name='zipcode'
                   className='form-control text-center'
                   placeholder='optional'
                   ref={targetLocation}
@@ -240,7 +255,7 @@ const MortgageCalculator = () => {
                   onMouseEnter={() => setShowLocOverlay(!showLocationOverlay)}
                   onMouseLeave={() => setShowLocOverlay(!showLocationOverlay)}
                 />
-
+                <p style={{ color: 'red' }}>{errors.zipcode}</p>
                 <Overlay
                   target={targetLocation.current}
                   show={showLocationOverlay}
