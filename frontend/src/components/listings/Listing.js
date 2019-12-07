@@ -1,30 +1,43 @@
 import './Listing.css';
 import React, { Fragment } from 'react';
-// import PropTypes from 'prop-types';
-import Longworth from '../../img/placeholders/longworth_cover.jpg';
+import NumberFormat from 'react-number-format';
+import PropTypes from 'prop-types';
 
-const Listing = props => {
+const Listing = ({ listing }) => {
   return (
     <Fragment>
       <div className='card mx-3 text-center'>
-        <img className='card-image-top img-fluid' src={Longworth} alt='' />
+        <img
+          className='card-img-top img-fluid'
+          src={`http://localhost:1337${listing.cover_photo.url}`}
+          alt={listing.description}
+        />
         <div className='card-img-overlay'>
           <h2>
-            <span className='badge badge-primary'>$49,000</span>
+            <span className='badge badge-primary'>
+              <NumberFormat
+                value={listing.price}
+                displayType={'text'}
+                thousandSeparator={true}
+                prefix={'$'}
+              />
+            </span>
           </h2>
         </div>
         <div className='card-body'>
           <h4 className='card-title'>
-            8031 Longworth Street <br /> Detroit, MI 48209
+            {listing.address} <br /> {listing.city}, {listing.state}{' '}
+            {listing.zipcode}
           </h4>
           <p className='info'>
-            <i className='fab fa-microsoft mr-2'></i> Sqft: 1,323
+            <i className='fab fa-microsoft mr-2'></i> Sqft:{' '}
+            {listing.square_feet}
           </p>
           <p className='info'>
-            <i className='fas fa-bath mr-2'></i> Bathrooms: 2
+            <i className='fas fa-bath mr-2'></i> Bathrooms: {listing.bathrooms}
           </p>
           <p className='info'>
-            <i className='fas fa-bed mr-2'></i> Bedroom: 4
+            <i className='fas fa-bed mr-2'></i> Bedroom: {listing.bedrooms}
           </p>
           <a href='!#' className='info btn'>
             More Info
@@ -35,6 +48,8 @@ const Listing = props => {
   );
 };
 
-// Listing.propTypes = {};
+Listing.propTypes = {
+  listing: PropTypes.object.isRequired
+};
 
 export default Listing;

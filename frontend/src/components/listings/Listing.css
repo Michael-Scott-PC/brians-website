@@ -19,3 +19,10 @@ p.info {
 .info {
     font-size: 1.25em;
 }
+
+.card-img-top {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 10px;
+}

@@ -10,8 +10,6 @@ const Footer = ({ getBrianInfo, brian: { brian } }) => {
     getBrianInfo();
   }, [getBrianInfo]);
 
-  console.log(brian);
-
   const {
     facebook,
     instagram,
@@ -22,59 +20,68 @@ const Footer = ({ getBrianInfo, brian: { brian } }) => {
     office_phone
   } = brian;
 
-  // console.log(facebook);
-  // console.log(instagram);
-  // console.log(linkedin);
-  // console.log(twitter);
-
   return (
     <Fragment>
       <footer className='footer'>
         <div className='foot container-fluid pt-3'>
           <div className='row text-center mb-1'>
             <div className='col-sm-12 mt-4'>
-              <a href={`${linkedin}`}>
-                <i className='fab fa-linkedin-in mr-2'></i>
-              </a>
-              <a href={`${facebook}`}>
-                <i className='fab fa-facebook-f mr-2'></i>
-              </a>
-              <a href={`${twitter}`}>
-                <i className='fab fa-twitter mr-2'></i>
-              </a>
-              <a href={`${instagram}`}>
-                <i className='fab fa-instagram mr-2'></i>
-              </a>
+              {linkedin && (
+                <a href={`${linkedin}`}>
+                  <i className='fab fa-linkedin-in mr-2'></i>
+                </a>
+              )}
+              {facebook && (
+                <a href={`${facebook}`}>
+                  <i className='fab fa-facebook-f mr-2'></i>
+                </a>
+              )}
+              {twitter && (
+                <a href={`${twitter}`}>
+                  <i className='fab fa-twitter mr-2'></i>
+                </a>
+              )}
+              {instagram && (
+                <a href={`${instagram}`}>
+                  <i className='fab fa-instagram mr-2'></i>
+                </a>
+              )}
             </div>
           </div>
-          <div className='row'>
-            <div className='col-sm-12'>
-              <a href='http://' target='_blank' rel='noopener noreferrer'>
-                <p className='text-center mb-1 contact-info'>
-                  <i className='fas fa-envelope mr-2'></i>
-                  {email}
-                </p>
-              </a>
+          {email && (
+            <div className='row'>
+              <div className='col-sm-12'>
+                <a href='http://' target='_blank' rel='noopener noreferrer'>
+                  <p className='text-center mb-1 contact-info'>
+                    <i className='fas fa-envelope mr-2'></i>
+                    {email}
+                  </p>
+                </a>
+              </div>
             </div>
-          </div>
-          <div className='row'>
-            <div className='col-sm-12'>
-              <a href='http://' target='_blank' rel='noopener noreferrer'>
-                <p className='text-center mb-1 contact-info'>
-                  <i className='fas fa-phone mr-2'></i>Office: {office_phone}
-                </p>
-              </a>
+          )}
+          {office_phone && (
+            <div className='row'>
+              <div className='col-sm-12'>
+                <a href='http://' target='_blank' rel='noopener noreferrer'>
+                  <p className='text-center mb-1 contact-info'>
+                    <i className='fas fa-phone mr-2'></i>Office: {office_phone}
+                  </p>
+                </a>
+              </div>
             </div>
-          </div>
-          <div className='row '>
-            <div className='col-sm-12'>
-              <a href='http://' target='_blank' rel='noopener noreferrer'>
-                <p className='text-center contact-info'>
-                  <i className='fas fa-mobile-alt mr-2'></i>Cell: {cell}
-                </p>
-              </a>
+          )}
+          {cell && (
+            <div className='row '>
+              <div className='col-sm-12'>
+                <a href='http://' target='_blank' rel='noopener noreferrer'>
+                  <p className='text-center contact-info'>
+                    <i className='fas fa-mobile-alt mr-2'></i>Cell: {cell}
+                  </p>
+                </a>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </footer>
     </Fragment>

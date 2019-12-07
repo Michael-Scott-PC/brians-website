@@ -15,7 +15,7 @@ const Testimonials = ({
     getTestimonials();
   }, [getTestimonials]);
 
-  console.log(testimonials);
+  // console.log(testimonials);
 
   return (
     <Fragment>

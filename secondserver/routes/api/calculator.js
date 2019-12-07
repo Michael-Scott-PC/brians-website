@@ -52,10 +52,10 @@ router.get('/', async (req, res) => {
 
     const fin_step = remove_end_ampersand(second_step);
 
-    const options = {
-      uri: `https://mortgageapi.zillow.com/getCurrentRates?${fin_step}`,
-      method: 'GET'
-    };
+    // const options = {
+    //   uri: `https://mortgageapi.zillow.com/getCurrentRates?${fin_step}`,
+    //   method: 'GET'
+    // };
 
     request(options, (error, response, body) => {
       console.log('OPTIONS: ', options);

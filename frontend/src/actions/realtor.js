@@ -37,7 +37,7 @@ export const getHeadshot = () => async dispatch => {
       `uploads/ec3e5789d3e140918e1f6c017705d64e.jpeg`
     );
 
-    console.log(res);
+    // console.log(res);
 
     dispatch({
       type: GET_BRIAN_HEADSHOT,

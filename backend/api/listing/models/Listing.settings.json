@@ -106,6 +106,9 @@
     },
     "open_house_end_time": {
       "type": "string"
+    },
+    "list_date": {
+      "type": "date"
     }
   }
 }

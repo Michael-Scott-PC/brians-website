@@ -77,7 +77,7 @@ const MortgageCalculator = () => {
       setProgram('ARM5');
       setLoanType('Conventional');
     }
-    console.log('useEffect ran.');
+    // console.log('useEffect ran.');
     setErrors(validateCalculator(propertyValue, loanAmount, zipcode));
   }, [program, propertyValue, loanAmount, zipcode]);
 
@@ -97,7 +97,6 @@ const MortgageCalculator = () => {
         <div className='mortgage card text-center'>
           <div className='calculator card-title mt-4'>
             <h3>Mortgage Calculator</h3>
-            <h3>Errors Object: {Object.keys(errors).length}</h3>
           </div>
           <form onSubmit={onFormSubmit} noValidate>
             <div className='row mx-2 mb-3'>
