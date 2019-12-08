@@ -1,17 +1,22 @@
 import './Listing.css';
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import PropTypes from 'prop-types';
+
+// import { getListing } from '../../actions/listing';
 
 const Listing = ({ listing }) => {
   return (
     <Fragment>
       <div className='card mx-3 text-center'>
-        <img
-          className='card-img-top img-fluid'
-          src={`http://localhost:1337${listing.cover_photo.url}`}
-          alt={listing.description}
-        />
+        <div className='img-hover-zoom'>
+          <img
+            className='card-img-top img-fluid cover-photo'
+            src={`http://localhost:1337${listing.cover_photo.url}`}
+            alt={listing.description}
+          />
+        </div>
         <div className='card-img-overlay'>
           <h2>
             <span className='badge badge-primary'>
@@ -39,9 +44,9 @@ const Listing = ({ listing }) => {
           <p className='info'>
             <i className='fas fa-bed mr-2'></i> Bedroom: {listing.bedrooms}
           </p>
-          <a href='!#' className='info btn'>
+          <Link to={`/listings/${listing.id}`} className='info btn'>
             More Info
-          </a>
+          </Link>
         </div>
       </div>
     </Fragment>

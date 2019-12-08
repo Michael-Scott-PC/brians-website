@@ -9,7 +9,7 @@ import { getTestimonials } from '../../actions/testimonial';
 
 const Testimonials = ({
   getTestimonials,
-  testimonials_object: { loading, testimonials }
+  testimonialsReducer: { loading, testimonials }
 }) => {
   useEffect(() => {
     getTestimonials();
@@ -43,11 +43,11 @@ const Testimonials = ({
 
 Testimonials.propTypes = {
   getTestimonials: PropTypes.func.isRequired,
-  testimonials_object: PropTypes.object.isRequired
+  testimonialsReducer: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  testimonials_object: state.testimonialReducer
+  testimonialsReducer: state.testimonialReducer
 });
 
 export default connect(mapStateToProps, { getTestimonials })(Testimonials);

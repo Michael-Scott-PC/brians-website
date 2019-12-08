@@ -7,7 +7,7 @@ import {
 const initialState = {
   recentListing: {},
   listing: {},
-  allListings: {},
+  allListings: [],
   loading: true
 };
 

@@ -25,7 +25,7 @@ const AllListings = ({
           Browse Listings
         </h1>
         <div className='row'>
-          {loading ? (
+          {allListings.length === 0 || loading ? (
             <Spinner />
           ) : (
             allListings.map(listing => (

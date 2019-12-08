@@ -1,6 +1,7 @@
 import './RecentListing.css';
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import { getRecentListing } from '../../actions/listing';
 import PropTypes from 'prop-types';
@@ -20,6 +21,7 @@ const RecentListing = ({
     city,
     cover_photo,
     description,
+    id,
     price,
     square_feet,
     state,
@@ -40,11 +42,13 @@ const RecentListing = ({
           <h3>Most Recent Listing</h3>
         </div>
         <div className='card mx-3 text-center'>
-          <img
-            className='card-image-top img-fluid'
-            src={renderCoverPhoto()}
-            alt={description}
-          />
+          <div className='img-hover-zoom'>
+            <img
+              className='card-image-top img-fluid cover-photo'
+              src={renderCoverPhoto()}
+              alt={description}
+            />
+          </div>
           <div className='card-img-overlay'>
             <h2>
               <span className='badge badge-primary'>
@@ -59,7 +63,9 @@ const RecentListing = ({
           </div>
           <div className='card-body'>
             <h4 className='card-title'>
-              {address} <br /> {city}, {state} {zipcode}
+              {address} <br />
+              <i className='fas fa-map-marker-alt'></i> {city}, {state}{' '}
+              {zipcode}
             </h4>
             <p className='info'>
               <i className='fab fa-microsoft mr-2'></i> Sqft: {square_feet}
@@ -70,9 +76,9 @@ const RecentListing = ({
             <p className='info'>
               <i className='fas fa-bed mr-2'></i> Bedroom: {bedrooms}
             </p>
-            <a href='!#' className='info btn'>
+            <Link to={`/listings/${id}`} className='info btn'>
               More Info
-            </a>
+            </Link>
           </div>
         </div>
       </div>

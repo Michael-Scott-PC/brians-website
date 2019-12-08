@@ -1,0 +1,21 @@
+div.listing-detail {
+    background-color: #B8B3BE;
+}
+
+div.address {
+    background-color: rgba(0, 0, 0, 0.82);
+}
+
+.address {
+    color: #ffffff;
+}
+
+p.address {
+    margin-bottom: 0;
+}
+
+img.thumbnail-img:hover {
+    transition-timing-function: ease;
+    transition: 1s;
+    transform: scale(1.1);
+}

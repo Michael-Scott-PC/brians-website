@@ -26,3 +26,15 @@ p.info {
     object-fit: cover;
     border-radius: 10px;
 }
+
+div.img-hover-zoom {
+    overflow: hidden;
+}
+
+img.cover-photo {
+    transition: transform 1s;
+}
+
+img.cover-photo:hover {
+    transform: scale(1.2);
+}

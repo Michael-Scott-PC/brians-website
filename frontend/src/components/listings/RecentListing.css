@@ -18,3 +18,15 @@
     color: #FFFFFF;
     width: 50%;
 }
+
+div.img-hover-zoom {
+    overflow: hidden;
+}
+
+img.cover-photo {
+    transition: transform 1s;
+}
+
+img.cover-photo:hover {
+    transform: scale(1.2);
+}
