@@ -19,6 +19,7 @@ const Navbar = ({ toggle }) => {
       <nav className='navbar navbar-expand-sm sticky-top'>
         <button
           onClick={toggle}
+          id='navbar-toggler'
           className='navbar-toggler'
           type='button'
           data-toggle='collapse'

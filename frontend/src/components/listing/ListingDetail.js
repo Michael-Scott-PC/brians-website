@@ -24,7 +24,7 @@ const ListingDetail = ({
   // Show the picture modal
   const [show, setShow] = useState({
     show: false,
-    currentPhoto: ''
+    currentPhoto: ``
   });
 
   const {
@@ -82,23 +82,20 @@ const ListingDetail = ({
           className='img-fluid'
           src={renderCoverPhoto()}
           alt={listing.description}
-          onClick={() =>
-            setShow({ show: true, currentPhoto: renderCoverPhoto() })
-          }
+          onClick={() => {
+            setShow({ show: true, currentPhoto: renderCoverPhoto() });
+          }}
         />
         <PicModal
           show={show.show}
           currentphoto={show.currentPhoto}
           photos={photos}
+          address={address}
+          city={city}
+          state={state}
+          zipcode={zipcode}
           onHide={() => setShow(false)}
         />
-        {/* <Modal
-          show={show}
-          size='lg'
-          aria-labelledby='contained-modal-title-vcenter'
-          centered>
-          <Modal.Header closeButton></Modal.Header>
-        </Modal> */}
         {loading ? (
           <Spinner />
         ) : (
@@ -112,7 +109,12 @@ const ListingDetail = ({
                         className='img-fluid thumbnail-img'
                         src={`http://localhost:1337${photo.url}`}
                         alt='pictures of a property'
-                        onClick={() => setShow(true)}
+                        onClick={() =>
+                          setShow({
+                            show: true,
+                            currentPhoto: `http://localhost:1337${photo.url}`
+                          })
+                        }
                       />
                     </div>
                   ))}

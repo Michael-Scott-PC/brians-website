@@ -67,6 +67,9 @@ p.description-paragraph {
     font-size: 1.25em;
 }
 
+.blur {
+    filter: blur(5px);
+}
 /* h5.detail-header {
     display: inline-block;
 } */
