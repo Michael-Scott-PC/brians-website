@@ -104,10 +104,20 @@
       "required": true,
       "type": "string"
     },
-    "open_house_end_time": {
+    "list_date": {
+      "type": "date"
+    },
+    "property_type": {
       "type": "string"
     },
-    "list_date": {
+    "availability": {
+      "enum": [
+        "For Sale",
+        "For Rent"
+      ],
+      "type": "enumeration"
+    },
+    "open_house_end_time": {
       "type": "date"
     }
   }
