@@ -1,13 +1,15 @@
 import './ListingDetail.css';
+import 'react-multi-carousel/lib/styles.css';
 import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import Modal from 'react-bootstrap/Modal';
 import NumberFormat from 'react-number-format';
+import Carousel from 'react-multi-carousel';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import { getListing } from '../../actions/listing';
+import history from '../../history';
 
 import Spinner from '../spinner/Spinner';
 import PicModal from './PicModal';
@@ -26,6 +28,34 @@ const ListingDetail = ({
     show: false,
     currentPhoto: ``
   });
+
+  // this gets passed into our Carousel property
+  const responsive = {
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024
+      },
+      items: 3,
+      partialVisibilityGutter: 40
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0
+      },
+      items: 2,
+      partialVisibilityGutter: 30
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 2,
+      partialVisibilityGutter: 30
+    }
+  };
 
   const {
     address,
@@ -68,15 +98,36 @@ const ListingDetail = ({
     }
   };
 
+  console.log(photos);
+  console.log(listing);
+
   return (
     <Fragment>
       <div className='listing-detail'>
         <div className='address text-center py-4'>
+          <div className='container'>
+            <div className='row'>
+              <div
+                onClick={() => history.push('/listings')}
+                className='col-1 fa-angle-left-div'
+              >
+                <i className='fas fa-angle-left'></i>
+              </div>
+              <div className='col-10'>
+                <h1 className='address'>{address}</h1>
+                <p className='address'>
+                  <i className='fas fa-map-marker-alt mr-2'></i>
+                  {city}, {state} {zipcode}
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* <i className='fas fa-angle-left'></i>
           <h1 className='address'>{address}</h1>
           <p className='address'>
             <i className='fas fa-map-marker-alt mr-2'></i>
             {city}, {state} {zipcode}
-          </p>
+          </p> */}
         </div>
         <img
           className='img-fluid'
@@ -96,33 +147,56 @@ const ListingDetail = ({
           zipcode={zipcode}
           onHide={() => setShow(false)}
         />
-        {loading ? (
+        {!photos ? (
           <Spinner />
         ) : (
           <Fragment>
-            <div className='container thumbnail-container mb-4'>
-              <div className='row justify-content-center'>
-                {photos &&
-                  photos.map(photo => (
-                    <div key={photo.id} className='col-6 my-3'>
-                      <img
-                        className='img-fluid thumbnail-img'
-                        src={`http://localhost:1337${photo.url}`}
-                        alt='pictures of a property'
-                        onClick={() =>
-                          setShow({
-                            show: true,
-                            currentPhoto: `http://localhost:1337${photo.url}`
-                          })
-                        }
-                      />
-                    </div>
-                  ))}
-              </div>
-            </div>
+            <Carousel
+              additionalTransfrom={0}
+              arrows
+              centerMode={false}
+              className=''
+              containerClass='container-with-dots'
+              dotListClass=''
+              draggable
+              focusOnSelect={false}
+              infinite
+              itemClass=''
+              keyBoardControl
+              minimumTouchDrag={80}
+              renderButtonGroupOutside={false}
+              renderDotsOutside={false}
+              responsive={responsive}
+              showDots={false}
+              sliderClass=''
+              slidesToSlide={1}
+              swipeable
+            >
+              {photos &&
+                photos.map(photo => (
+                  <img
+                    key={photo.id}
+                    className='img-fluid thumbnail-img'
+                    src={`http://localhost:1337${photo.url}`}
+                    alt='pictures of a property'
+                    onClick={() =>
+                      setShow({
+                        show: true,
+                        currentPhoto: `http://localhost:1337${photo.url}`
+                      })
+                    }
+                  />
+                ))}
+            </Carousel>
           </Fragment>
         )}
-        <div className='container'>
+        {photos && (
+          <h5 className='total-photos'>Total Photos: {photos.length}</h5>
+        )}
+        <div className='container mt-5'>
+          <h1 className='property-details-header text-center mb-3'>
+            Property Details
+          </h1>
           <div className='row'>
             <ul className='listing-details-list col-12'>
               <div className='row'>
@@ -231,15 +305,23 @@ const ListingDetail = ({
                   <div className='detail col-8'>{realtor && realtor.name}</div>
                 </li>
               </div>
-              <h2 className='mb-0 mt-3 d-inline-block'>Description</h2>
-              <i className='fas fa-home ml-2'></i>
-              <div className='container description-container text-center mb-4 p-4'>
-                <p className='description-paragraph'>{description}</p>
-                <Link to={`/listings/${id}`} className='inquiry btn'>
-                  Make Inquiry
-                </Link>
-              </div>
             </ul>
+          </div>
+          <h2 className='mb-0 mt-3 d-inline-block'>Description</h2>
+          <i className='fas fa-home ml-2'></i>
+          <div className='container description-container text-center mb-5 p-4'>
+            <p className='description-paragraph'>{description}</p>
+            <Link to={`/listings/${id}`} className='inquiry btn'>
+              Make Inquiry
+            </Link>
+          </div>
+          <div className='btn-container text-center'>
+            <button
+              onClick={() => history.push('/listings')}
+              className='info btn mb-5'
+            >
+              Back to Listings
+            </button>
           </div>
         </div>
       </div>

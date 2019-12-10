@@ -17,23 +17,33 @@ const PicModal = props => {
     document.getElementById('root').classList.add('blur');
   }
 
-  // const responsive = {
-  //   desktop: {
-  //     breakpoint: { max: 3000, min: 1024 },
-  //     items: 3,
-  //     slidesToSlide: 3 // optional, default to 1.
-  //   },
-  //   tablet: {
-  //     breakpoint: { max: 1024, min: 464 },
-  //     items: 2,
-  //     slidesToSlide: 2 // optional, default to 1.
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 464, min: 0 },
-  //     items: 2,
-  //     slidesToSlide: 2 // optional, default to 1.
-  //   }
-  // };
+  // this gets passed into our Carousel property
+  const responsive = {
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024
+      },
+      items: 3,
+      partialVisibilityGutter: 40
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0
+      },
+      items: 2,
+      partialVisibilityGutter: 30
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 2,
+      partialVisibilityGutter: 30
+    }
+  };
 
   console.log(props.photos);
   return (
@@ -87,32 +97,7 @@ const PicModal = props => {
           minimumTouchDrag={80}
           renderButtonGroupOutside={false}
           renderDotsOutside={false}
-          responsive={{
-            desktop: {
-              breakpoint: {
-                max: 3000,
-                min: 1024
-              },
-              items: 3,
-              partialVisibilityGutter: 40
-            },
-            mobile: {
-              breakpoint: {
-                max: 464,
-                min: 0
-              },
-              items: 2,
-              partialVisibilityGutter: 30
-            },
-            tablet: {
-              breakpoint: {
-                max: 1024,
-                min: 464
-              },
-              items: 2,
-              partialVisibilityGutter: 30
-            }
-          }}
+          responsive={responsive}
           showDots={false}
           sliderClass=''
           slidesToSlide={1}
@@ -122,7 +107,7 @@ const PicModal = props => {
             props.photos.map(photo => (
               <div key={photo.id} className='mx-2 my-2'>
                 <img
-                  className='img-fluid thumbnail-img'
+                  className='img-fluid thumbnail-img-modal'
                   src={`http://localhost:1337${photo.url}`}
                   alt='pictures of a property'
                   onClick={() =>
