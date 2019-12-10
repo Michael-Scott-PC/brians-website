@@ -24,8 +24,8 @@ const ListingDetail = ({
   }, [getListing, match.params.id]);
 
   // Show the picture modal
-  const [show, setShow] = useState({
-    show: false,
+  const [showPicModal, setShow] = useState({
+    showPicModal: false,
     currentPhoto: ``
   });
 
@@ -70,7 +70,7 @@ const ListingDetail = ({
     garage,
     heating,
     heating_fuel,
-    id, // could use this to implement 'favorite' feature
+    // id, // could use this to implement 'favorite' feature
     list_date,
     lot_size,
     open_house_date,
@@ -128,12 +128,12 @@ const ListingDetail = ({
           src={renderCoverPhoto()}
           alt={listing.description}
           onClick={() => {
-            setShow({ show: true, currentPhoto: renderCoverPhoto() });
+            setShow({ showPicModal: true, currentPhoto: renderCoverPhoto() });
           }}
         />
         <PicModal
-          show={show.show}
-          currentphoto={show.currentPhoto}
+          show={showPicModal.showPicModal}
+          currentphoto={showPicModal.currentPhoto}
           photos={photos}
           address={address}
           city={city}
@@ -175,7 +175,7 @@ const ListingDetail = ({
                     alt='pictures of a property'
                     onClick={() =>
                       setShow({
-                        show: true,
+                        showPicModal: true,
                         currentPhoto: `http://localhost:1337${photo.url}`
                       })
                     }
@@ -305,7 +305,7 @@ const ListingDetail = ({
           <i className='fas fa-home ml-2'></i>
           <div className='container description-container text-center mb-5 p-4'>
             <p className='description-paragraph'>{description}</p>
-            <Link to={`/listings/${id}`} className='inquiry btn'>
+            <Link to={`inquiries`} className='inquiry btn'>
               Make Inquiry
             </Link>
           </div>

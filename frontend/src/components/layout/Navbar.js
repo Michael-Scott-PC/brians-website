@@ -26,19 +26,23 @@ const Navbar = ({ toggle }) => {
           data-target='#navbarToggleExternalContent'
           aria-controls='navbarToggleExternalContent'
           aria-expanded='false'
-          aria-label='Toggle navigation'>
+          aria-label='Toggle navigation'
+        >
           <div
             className={
               !bar1 ? 'navbar-toggler-line1' : 'navbar-toggler-line1 one'
-            }></div>
+            }
+          ></div>
           <div
             className={
               !bar2 ? 'navbar-toggler-line2' : 'navbar-toggler-line2 two'
-            }></div>
+            }
+          ></div>
           <div
             className={
               !bar3 ? 'navbar-toggler-line3' : 'navbar-toggler-line3 three'
-            }></div>
+            }
+          ></div>
         </button>
         <img
           className='skyline mx-auto'
@@ -56,7 +60,7 @@ const Navbar = ({ toggle }) => {
         <Link to='/news-events' className='dropdown-item pt-4'>
           News &amp; Events
         </Link>
-        <Link to='/contact' className='dropdown-item pt-4'>
+        <Link to='/contacts' className='dropdown-item pt-4'>
           Contact
         </Link>
         <Link to='/signin' className='dropdown-item pt-4'>

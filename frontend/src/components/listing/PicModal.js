@@ -1,9 +1,9 @@
 import './PicModal.css';
+import 'react-multi-carousel/lib/styles.css';
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 
 const PicModal = props => {
   const [current, setCurrent] = useState(``);

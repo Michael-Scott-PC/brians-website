@@ -1,0 +1,43 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "contact",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "first_name": {
+      "type": "string",
+      "maxLength": 30,
+      "required": true,
+      "minLength": 2
+    },
+    "last_name": {
+      "type": "string",
+      "maxLength": 30,
+      "required": true,
+      "minLength": 2
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "minLength": 7,
+      "maxLength": 40
+    },
+    "phone": {
+      "maxLength": 10,
+      "minLength": 10,
+      "type": "string"
+    },
+    "question": {
+      "maxLength": 1000,
+      "unique": true,
+      "required": true,
+      "minLength": 10,
+      "type": "text"
+    }
+  }
+}
