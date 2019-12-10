@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const Listing = ({ listing }) => {
   return (
     <Fragment>
-      <div className='card mx-3 text-center'>
+      <div className='card listing-card mx-3 text-center'>
         <div className='img-hover-zoom'>
           <img
             className='card-img-top img-fluid cover-photo'

@@ -108,7 +108,7 @@ const ListingDetail = ({
           <div className='container'>
             <div className='row'>
               <div
-                onClick={() => history.push('/listings')}
+                onClick={() => history.goBack()}
                 className='col-1 fa-angle-left-div'
               >
                 <i className='fas fa-angle-left'></i>
@@ -122,12 +122,6 @@ const ListingDetail = ({
               </div>
             </div>
           </div>
-          {/* <i className='fas fa-angle-left'></i>
-          <h1 className='address'>{address}</h1>
-          <p className='address'>
-            <i className='fas fa-map-marker-alt mr-2'></i>
-            {city}, {state} {zipcode}
-          </p> */}
         </div>
         <img
           className='img-fluid'
@@ -316,11 +310,8 @@ const ListingDetail = ({
             </Link>
           </div>
           <div className='btn-container text-center'>
-            <button
-              onClick={() => history.push('/listings')}
-              className='info btn mb-5'
-            >
-              Back to Listings
+            <button onClick={() => history.goBack()} className='info btn mb-5'>
+              Go Back
             </button>
           </div>
         </div>

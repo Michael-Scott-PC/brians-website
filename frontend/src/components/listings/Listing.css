@@ -3,6 +3,10 @@
     border-radius: 10px;
 }
 
+.listing-card {
+    border: 0;
+}
+
 .card-img-overlay {
     position: absolute;
     top: 0;
