@@ -10,6 +10,7 @@ import moment from 'moment';
 
 import { getListing } from '../../actions/listing';
 import history from '../../history';
+import axiosSecondServer from '../../api/axiosSecondServer';
 
 import Spinner from '../spinner/Spinner';
 import PicModal from './PicModal';
@@ -19,8 +20,25 @@ const ListingDetail = ({
   listingReducer: { listing, loading },
   match
 }) => {
+  // const getGoogleMap = async () => {
+  //   try {
+  //     console.log('this ran. 25');
+  //     const res = await axiosSecondServer.get(`/api/map/`, {
+  //       params: {
+  //         q: '1600 Amphitheatre Parkway, Mountain View, CA'
+  //       }
+  //     });
+
+  //     console.log('this ran. 32');
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
     getListing(match.params.id);
+    // getGoogleMap();
   }, [getListing, match.params.id]);
 
   // Show the picture modal
@@ -309,6 +327,17 @@ const ListingDetail = ({
               Make Inquiry
             </Link>
           </div>
+          <div id='map' style={{ height: '100%' }}></div>
+          <iframe
+            className=''
+            width='100%'
+            height='auto'
+            frameBorder='0'
+            style={{ border: '0' }}
+            title='google map'
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAP}&q=${address}`}
+            allowFullScreen
+          ></iframe>
           <div className='btn-container text-center'>
             <button onClick={() => history.goBack()} className='info btn mb-5'>
               Go Back
