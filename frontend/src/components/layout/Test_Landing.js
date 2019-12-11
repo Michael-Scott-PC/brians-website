@@ -15,11 +15,22 @@ const Landing = ({ getLandingImage, landing: { landing, loading } }) => {
       if (landing.landing_photo) {
         const { url } = landing.landing_photo;
         return (
-          <img
-            className='landing img-fluid'
-            src={`http://localhost:1337${url}`}
-            alt={landing.description}
-          />
+          <div className='container' style={{ height: '250px' }}>
+            <div className='row' style={{ height: '250px', width: '100%' }}>
+              <img
+                className='landing img-fluid'
+                // src={`http://localhost:1337${url}`}
+                // alt={landing.description}
+                style={{
+                  background: `url(http://localhost:1337${url}) 0% 19%`,
+                  backgroundAttachment: 'fixed',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'contain',
+                  width: '100%'
+                }}
+              />
+            </div>
+          </div>
         );
       }
     }

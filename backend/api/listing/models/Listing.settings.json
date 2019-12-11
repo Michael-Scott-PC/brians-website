@@ -83,7 +83,7 @@
     "school_district": {
       "type": "string"
     },
-    "publish?": {
+    "publish": {
       "type": "boolean"
     },
     "realtor": {

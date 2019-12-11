@@ -25,7 +25,7 @@ export const getRecentListing = () => async dispatch => {
 // @access Public
 export const getAllListings = () => async dispatch => {
   try {
-    const res = await axiosStrapi.get('/listings');
+    const res = await axiosStrapi.get('/listings?publish_eq=true');
 
     dispatch({
       type: GET_ALL_LISTINGS,

@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "landing",
   "info": {
     "name": "landing",
     "description": ""
@@ -14,8 +14,12 @@
       "via": "related",
       "plugin": "upload"
     },
-    "publish?": {
+    "publish": {
       "type": "boolean"
+    },
+    "description": {
+      "required": true,
+      "type": "string"
     }
   }
 }

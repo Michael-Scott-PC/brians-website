@@ -2,7 +2,7 @@ import './ListingDetail.css';
 import 'react-multi-carousel/lib/styles.css';
 import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 import Carousel from 'react-multi-carousel';
 import PropTypes from 'prop-types';
@@ -10,35 +10,18 @@ import moment from 'moment';
 
 import { getListing } from '../../actions/listing';
 import history from '../../history';
-import axiosSecondServer from '../../api/axiosSecondServer';
 
 import Spinner from '../spinner/Spinner';
 import PicModal from './PicModal';
+import InquiryModal from './InquiryModal';
 
 const ListingDetail = ({
   getListing,
   listingReducer: { listing, loading },
   match
 }) => {
-  // const getGoogleMap = async () => {
-  //   try {
-  //     console.log('this ran. 25');
-  //     const res = await axiosSecondServer.get(`/api/map/`, {
-  //       params: {
-  //         q: '1600 Amphitheatre Parkway, Mountain View, CA'
-  //       }
-  //     });
-
-  //     console.log('this ran. 32');
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   useEffect(() => {
     getListing(match.params.id);
-    // getGoogleMap();
   }, [getListing, match.params.id]);
 
   // Show the picture modal
@@ -46,6 +29,8 @@ const ListingDetail = ({
     showPicModal: false,
     currentPhoto: ``
   });
+  // Show the inquiry modal
+  const [showInquiryModal, setShowInquiryModal] = useState(false);
 
   // this gets passed into our Carousel property
   const responsive = {
@@ -323,13 +308,27 @@ const ListingDetail = ({
           <i className='fas fa-home ml-2'></i>
           <div className='container description-container text-center mb-5 p-4'>
             <p className='description-paragraph'>{description}</p>
-            <Link to={`inquiries`} className='inquiry btn'>
+            {/* <Link
+              onClick={() => setShowInquiryModal(!showInquiryModal)}
+              to={`/inquiries`}
+              className='inquiry btn'
+            >
               Make Inquiry
-            </Link>
+            </Link> */}
+            <button
+              className='inquiry btn'
+              onClick={() => setShowInquiryModal(true)}
+            >
+              Make Inquiry
+            </button>
+            <InquiryModal
+              show={showInquiryModal}
+              address={address}
+              onHide={() => setShowInquiryModal(false)}
+            />
           </div>
-          <div id='map' style={{ height: '100%' }}></div>
           <iframe
-            className=''
+            className='mb-5'
             width='100%'
             height='auto'
             frameBorder='0'

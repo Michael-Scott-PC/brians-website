@@ -2,6 +2,7 @@ import { GET_LANDING_IMG } from '../actions/types';
 
 const initialState = {
   landing: '',
+  description: '',
   loading: true
 };
 
