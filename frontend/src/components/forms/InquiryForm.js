@@ -6,12 +6,12 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
 import { createInquiry } from '../../actions/inquiry';
-import InquirySchema from './schemas/inquirySchema';
+import FormSchema from './schemas/formSchema';
 
 const InquiryForm = ({ address, createInquiry }) => {
   return (
     <Formik
-      validationSchema={InquirySchema}
+      validationSchema={FormSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         setTimeout(() => {
           createInquiry(values);

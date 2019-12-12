@@ -3,6 +3,7 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 
 //import Navbar from '../components/layout/Navbar';
+import Alert from '../components/layout/Alert';
 import Navbar from '../components/layout/Navbar';
 import Home from '../components/pages/Home';
 // import AllListings from '../components/listings/AllListings';
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <Router history={history}>
       <Navbar />
+      {/* <Alert /> */}
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/listings' exact component={Listings} />

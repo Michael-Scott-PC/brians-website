@@ -8,3 +8,7 @@ export const GET_RECENT_LISTING = 'GET_RECENT_LISTING';
 export const GET_ALL_LISTINGS = 'GET_ALL_LISTINGS';
 export const GET_LISTING = 'GET_LISTING';
 export const POST_INQUIRY = 'POST_INQUIRY';
+export const POST_CONTACT = 'POST_CONTACT';
+export const ERROR_POST_CONTACT = 'ERROR_POST_CONTACT';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
