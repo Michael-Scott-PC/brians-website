@@ -146,7 +146,7 @@ const InquiryForm = ({ address, createInquiry }) => {
           </Form.Group>
           <div className='container'>
             <div className='row justify-content-center'>
-              <Button className='mt-4 submit-inquiry' type='submit'>
+              <Button className='mt-4 mb-4 submit-inquiry' type='submit'>
                 Submit
               </Button>
             </div>

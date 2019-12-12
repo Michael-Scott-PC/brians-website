@@ -1,4 +1,3 @@
-import './Home.css';
 import React, { Fragment } from 'react';
 
 import About from '../realtor/About';

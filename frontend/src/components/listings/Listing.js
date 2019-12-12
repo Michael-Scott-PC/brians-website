@@ -12,7 +12,7 @@ const Listing = ({ listing }) => {
       <div className='card listing-card mx-3 text-center'>
         <div className='img-hover-zoom'>
           <img
-            className='card-img-top img-fluid cover-photo'
+            className='card-img-top listing-card-img-top img-fluid cover-photo'
             src={`http://localhost:1337${listing.cover_photo.url}`}
             alt={listing.description}
           />
