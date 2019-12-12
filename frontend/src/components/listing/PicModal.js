@@ -45,7 +45,6 @@ const PicModal = props => {
     }
   };
 
-  console.log(props.photos);
   return (
     <Modal
       {...props}

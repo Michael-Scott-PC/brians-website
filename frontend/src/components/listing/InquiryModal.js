@@ -1,23 +1,31 @@
 import './InquiryModal.css';
 import React from 'react';
+import { connect } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalHeader from 'react-bootstrap/ModalHeader';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import InquiryForm from '../forms/InquiryForm';
 
-const InquiryModal = props => {
+const InquiryModal = ({ inquiryReducer: { sent }, address, show, onHide }) => {
   const cleanUp = () => {
     document.getElementById('root').classList.remove('blur');
   };
 
-  if (props.show) {
+  if (show) {
     document.getElementById('root').classList.add('blur');
   }
+
+  if (sent) {
+    onHide();
+  }
+
   return (
     <Modal
-      {...props}
+      show={show}
+      address={address}
+      onHide={onHide}
       size='lg'
       aria-labelledby='contained-modal-title-vcenter'
       centered
@@ -29,12 +37,18 @@ const InquiryModal = props => {
         <i className='fas fa-envelope inquiry-modal-envelope align-self-end mb-3'></i>
       </ModalHeader>
       <ModalBody>
-        <InquiryForm address={props.address} />
+        <InquiryForm address={address} />
       </ModalBody>
     </Modal>
   );
 };
 
-// InquiryModal.propTypes = {}
+InquiryModal.propTypes = {
+  inquiryReducer: PropTypes.object.isRequired
+};
 
-export default InquiryModal;
+const mapStateToProps = state => ({
+  inquiryReducer: state.inquiryReducer
+});
+
+export default connect(mapStateToProps)(InquiryModal);

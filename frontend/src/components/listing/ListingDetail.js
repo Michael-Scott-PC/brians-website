@@ -101,9 +101,6 @@ const ListingDetail = ({
     }
   };
 
-  console.log(photos);
-  console.log(listing);
-
   return (
     <Fragment>
       <div className='listing-detail'>
@@ -308,13 +305,6 @@ const ListingDetail = ({
           <i className='fas fa-home ml-2'></i>
           <div className='container description-container text-center mb-5 p-4'>
             <p className='description-paragraph'>{description}</p>
-            {/* <Link
-              onClick={() => setShowInquiryModal(!showInquiryModal)}
-              to={`/inquiries`}
-              className='inquiry btn'
-            >
-              Make Inquiry
-            </Link> */}
             <button
               className='inquiry btn'
               onClick={() => setShowInquiryModal(true)}

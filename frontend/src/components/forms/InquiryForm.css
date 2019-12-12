@@ -2,16 +2,42 @@
     color: #676F97;
 }
 
-.left-input-fields {
+/* .left-input-fields {
     padding-left: 0;
 }
 
 .right-input-fields {
     padding-right: 0;
-}
+} */
 
 .submit-inquiry {
     background-color: #758BFD;
     width: 50%;
     font-size: 1.5em;
+}
+
+input#formGroupPropertyAddress {
+    background-color: #EBEBEB;
+    box-shadow: 0px 3px 6px;
+}
+
+input#formGroupFirstName {
+    background-color: #EBEBEB;
+    box-shadow: 0px 3px 6px;
+}
+input#formGroupLastName {
+    background-color: #EBEBEB;
+    box-shadow: 0px 3px 6px;
+}
+input#formGroupEmail {
+    background-color: #EBEBEB;
+    box-shadow: 0px 3px 6px;
+}
+input#formGroupPhoneNumber {
+    background-color: #EBEBEB;
+    box-shadow: 0px 3px 6px;
+}
+#formGroupTextArea {
+    background-color: #EBEBEB;
+    box-shadow: 0px 3px 6px;
 }

@@ -1,70 +1,165 @@
 import './InquiryForm.css';
-import React, { Fragment } from 'react';
-import { Form, Button } from 'react-bootstrap';
-// import PropTypes from 'prop-types'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Form, Button, Col, Row } from 'react-bootstrap';
+import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 
-const InquiryForm = ({ address }) => {
+import { createInquiry } from '../../actions/inquiry';
+import InquirySchema from './schemas/inquirySchema';
+
+const InquiryForm = ({ address, createInquiry }) => {
   return (
-    <Fragment>
-      <Form>
-        <Form.Group controlId='formBasicEmail'>
-          <Form.Label>Property</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder={address}
-            style={{ fontWeight: 'bold' }}
-          />
-        </Form.Group>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-6 left-input-fields'>
-              <Form.Group controlId='formBasicEmail'>
+    <Formik
+      validationSchema={InquirySchema}
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        setTimeout(() => {
+          createInquiry(values);
+          setSubmitting(false);
+        }, 400);
+      }}
+      initialValues={{
+        property: address,
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        question: ''
+      }}
+    >
+      {({
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        values,
+        touched,
+        isValid,
+        errors
+      }) => (
+        <Form noValidate onSubmit={handleSubmit}>
+          <Form.Group controlId='formGroupPropertyAddress'>
+            <Form.Label>Property</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder={address}
+              style={{ fontWeight: 'bold' }}
+            />
+          </Form.Group>
+
+          <Row>
+            <Col className='left-input-fields'>
+              <Form.Group controlId='formGroupFirstName'>
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type='text' placeholder='enter first name' />
+                <Form.Control
+                  type='text'
+                  name='first_name'
+                  value={values.first_name}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.first_name && !errors.first_name}
+                  isInvalid={touched.first_name && errors.first_name}
+                  placeholder='enter first name'
+                  required
+                />
+                {errors.first_name && touched.first_name ? (
+                  <p style={{ color: 'red' }}>{errors.first_name}</p>
+                ) : null}
               </Form.Group>
-            </div>
-            <div className='col-6 right-input-fields'>
-              <Form.Group controlId='formBasicEmail'>
+            </Col>
+            <Col className='right-input-fields'>
+              <Form.Group controlId='formGroupLastName'>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type='text' placeholder='enter last name' />
+                <Form.Control
+                  type='text'
+                  name='last_name'
+                  value={values.last_name}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.last_name && !errors.last_name}
+                  isInvalid={touched.last_name && errors.last_name}
+                  placeholder='enter last name'
+                  required
+                />
+                {errors.last_name && touched.last_name ? (
+                  <p style={{ color: 'red' }}>{errors.last_name}</p>
+                ) : null}
               </Form.Group>
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Row>
 
-        <div className='container'>
-          <div className='row'>
-            <div className='col-6 left-input-fields'>
-              <Form.Group controlId='formBasicEmail'>
+          <Row>
+            <Col>
+              <Form.Group controlId='formGroupEmail'>
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type='email' placeholder='Enter email' />
+                <Form.Control
+                  type='email'
+                  name='email'
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.email && !errors.email}
+                  isInvalid={touched.email && errors.email}
+                  placeholder='Enter email'
+                  required
+                />
+                {errors.email && touched.email ? (
+                  <p style={{ color: 'red' }}>{errors.email}</p>
+                ) : null}
               </Form.Group>
-            </div>
-            <div className='col-6 right-input-fields'>
-              <Form.Group controlId='formBasicEmail'>
+            </Col>
+            <Col>
+              <Form.Group controlId='formGroupPhoneNumber'>
                 <Form.Label>Phone</Form.Label>
-                <Form.Control type='text' placeholder='Enter phone' />
+                <Form.Control
+                  type='text'
+                  placeholder='Enter phone'
+                  name='phone'
+                  value={values.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.phone && !errors.phone}
+                  isInvalid={touched.phone && errors.phone}
+                />
+                {errors.phone && touched.phone ? (
+                  <p style={{ color: 'red' }}>{errors.phone}</p>
+                ) : null}
               </Form.Group>
+            </Col>
+          </Row>
+
+          <Form.Group controlId='formGroupTextArea'>
+            <Form.Label>Question?</Form.Label>
+            <Form.Control
+              as='textarea'
+              name='question'
+              value={values.question}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              isValid={touched.question && !errors.question}
+              isInvalid={touched.question && errors.question}
+              placeholder='Enter your inquiry here'
+              required
+            />
+            {errors.question && touched.question ? (
+              <p style={{ color: 'red' }}>{errors.question}</p>
+            ) : null}
+          </Form.Group>
+          <div className='container'>
+            <div className='row justify-content-center'>
+              <Button className='mt-4 submit-inquiry' type='submit'>
+                Submit
+              </Button>
             </div>
           </div>
-        </div>
-
-        <Form.Group controlId='formBasicEmail'>
-          <Form.Label>Question?</Form.Label>
-          <Form.Control as='textarea' placeholder='Enter email' />
-        </Form.Group>
-        <div className='container'>
-          <div className='row justify-content-center'>
-            <Button className='mt-4 submit-inquiry' type='submit'>
-              Submit
-            </Button>
-          </div>
-        </div>
-      </Form>
-    </Fragment>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
-// InquiryForm.propTypes = {}
+InquiryForm.propTypes = {
+  address: PropTypes.string.isRequired,
+  createInquiry: PropTypes.func.isRequired
+};
 
-export default InquiryForm;
+export default connect(null, { createInquiry })(InquiryForm);
