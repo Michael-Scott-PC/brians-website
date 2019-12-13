@@ -112,8 +112,8 @@
     },
     "availability": {
       "enum": [
-        "For Sale",
-        "For Rent"
+        "ForSale",
+        "ForRent"
       ],
       "type": "enumeration"
     },

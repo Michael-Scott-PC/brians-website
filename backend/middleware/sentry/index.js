@@ -1,7 +1,7 @@
 const Sentry = require('@sentry/node');
 
 Sentry.init({
-  dsn: 'https://7292d50849b748de9188bb893af27253@sentry.io/1855645',
+  dsn: 'https://d4394c619e6f43deac66bbd993dd45e0@sentry.io/1855829',
   environment: strapi.config.environment
 });
 

@@ -1,5 +1,5 @@
 {
-  "timeout": 100,
+  "timeout": 500,
   "load": {
     "before": [
       "responseTime",
