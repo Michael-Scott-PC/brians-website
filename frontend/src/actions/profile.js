@@ -1,11 +1,11 @@
 import { CREATE_USER, ERROR_CREATE_USER } from './types';
 import axiosStrapi from '../api/axiosStrapi';
 
-export const createUser = formData => async dispactch => {
+export const createUser = values => async dispatch => {
   try {
-    const res = await axiosStrapi.post('/auth/local/register');
+    const res = await axiosStrapi.post('/auth/local/register', values);
 
-    dispactch({
+    dispatch({
       type: CREATE_USER,
       payload: res.data
     });

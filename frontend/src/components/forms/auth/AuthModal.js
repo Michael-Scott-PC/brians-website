@@ -1,13 +1,13 @@
 import './AuthModal.css';
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { Nav, Col, Row } from 'react-bootstrap';
 // import PropTypes from 'prop-types';
 
-// import Register from './Register';
+import Register from './Register';
 // import Login from './Login';
 
 const AuthModal = props => {
-  console.log(props);
   const cleanUp = () => {
     document.getElementById('root').classList.remove('blur');
   };
@@ -16,10 +16,6 @@ const AuthModal = props => {
     document.getElementById('root').classList.add('blur');
   }
 
-  //   if (sent) {
-  //     onHide();
-  //   }
-
   return (
     <Modal
       {...props}
@@ -27,14 +23,25 @@ const AuthModal = props => {
       aria-labelledby='contained-modal-title-vcenter'
       centered
       onExit={cleanUp}
+      onHide
     >
-      <Modal.Header className='auth-modal-header' closeButton>
-        <br />
-        <h1 className='mt-5 mx-auto make-an-auth'>AUTH MODAL COMPONENT</h1>
-        <i className='fas fa-envelope auth-modal-envelope align-self-end mb-3'></i>
-      </Modal.Header>
+      <Row className='nav-row col-6'>
+        <Nav className='auth-nav-tabs' variant='tabs' defaultActiveKey='#!'>
+          <Nav.Item className='auth-nav-item col-6'>
+            <Nav.Link href='#!'>Login</Nav.Link>
+          </Nav.Item>
+          <Nav.Item className='auth-nav-item col-6'>
+            <Nav.Link eventKey='link-1'>Register</Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </Row>
       <Modal.Body>
-        <h1>AUTH MODAL BODY</h1>
+        <Row>
+          <Col className='col-3 offset-9'>
+            <Modal.Header className='auth-header' closeButton></Modal.Header>
+          </Col>
+        </Row>
+        <Register />
       </Modal.Body>
     </Modal>
   );
