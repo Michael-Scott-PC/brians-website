@@ -11,7 +11,9 @@ const Alert = ({ alerts }) =>
       className={`alert custom-alert alert-${alert.alertType}`}
       key={alert.id}
     >
-      {alert.msg}
+      {alert.msg === 'An internal server error occurred'
+        ? 'Your message appears to have already been sent. If you believe this to be an error, email brian@aredetroit.com'
+        : alert.msg}
     </div>
   ));
 

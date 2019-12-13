@@ -17,9 +17,7 @@ export const createContact = values => async dispatch => {
       setAlert('Your message was successfully sent to Brian!', 'success')
     );
   } catch (err) {
-    console.log(err.response);
     const error = err.response.data.message;
-    console.log(error);
 
     dispatch(setAlert(error, 'danger'));
 

@@ -1,9 +1,19 @@
-.custom-alert {
+.alert-success {
     color: #ffffff;
     text-align: center;
     position: absolute;
     width: 100%;
     z-index: 1000;
     top: 50%;
-    background-color: rgba(132, 0, 255, 0.75);
+    background-color: rgba(69, 160, 84, 0.74);
+}
+
+.alert-danger {
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    top: 50%;
+    background-color: rgba(202, 78, 47, 0.74);
 }

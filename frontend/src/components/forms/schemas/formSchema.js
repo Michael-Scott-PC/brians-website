@@ -19,6 +19,7 @@ export default yup.object({
     .required('Required'),
   phone: yup
     .string()
+    .matches(/^\d+$/, 'The phone number must consist of only digits.')
     .min(10, 'Too short! The phone number needs to be 10 digits long.')
     .max(
       10,

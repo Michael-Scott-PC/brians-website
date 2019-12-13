@@ -6,7 +6,6 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
 import { createContact } from '../../actions/contact';
-import { setAlert } from '../../actions/alert';
 import FormSchema from './schemas/formSchema';
 
 const ContactForm = ({ createContact }) => {
@@ -18,7 +17,7 @@ const ContactForm = ({ createContact }) => {
           setTimeout(() => {
             createContact(values);
             setSubmitting(false);
-            // resetForm(true);
+            resetForm(true);
           }, 400);
         }}
         initialValues={{

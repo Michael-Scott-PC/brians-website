@@ -2,6 +2,9 @@
     "files.associations": {
         "*.js": "javascriptreact"
     },
+    "code-runner.executorMapByGlob": {
+        "*.js": "node"
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     // Enable per-language
     "[javascript]": {

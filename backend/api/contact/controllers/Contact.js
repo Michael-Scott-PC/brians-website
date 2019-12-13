@@ -7,7 +7,6 @@
  */
 
 module.exports = {
-
   /**
    * Retrieve contact records.
    *
@@ -28,7 +27,7 @@ module.exports = {
    * @return {Object}
    */
 
-  findOne: async (ctx) => {
+  findOne: async ctx => {
     if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
       return ctx.notFound();
     }
@@ -42,7 +41,7 @@ module.exports = {
    * @return {Number}
    */
 
-  count: async (ctx) => {
+  count: async ctx => {
     return strapi.services.contact.count(ctx.query);
   },
 
@@ -52,7 +51,7 @@ module.exports = {
    * @return {Object}
    */
 
-  create: async (ctx) => {
+  create: async ctx => {
     return strapi.services.contact.add(ctx.request.body);
   },
 
@@ -63,7 +62,7 @@ module.exports = {
    */
 
   update: async (ctx, next) => {
-    return strapi.services.contact.edit(ctx.params, ctx.request.body) ;
+    return strapi.services.contact.edit(ctx.params, ctx.request.body);
   },
 
   /**
