@@ -1,7 +1,8 @@
 import './Navbar.css';
+import skyline from '../../img/navbar/ds_3x.png';
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import skyline from '../../img/navbar/ds_3x.png';
+import AuthModal from '../forms/auth/AuthModal';
 
 const Navbar = ({ toggle }) => {
   const [bar1, setBar1] = useState(false);
@@ -13,6 +14,8 @@ const Navbar = ({ toggle }) => {
     bar2 ? setBar2(false) : setBar2(true);
     bar3 ? setBar3(false) : setBar3(true);
   };
+
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   return (
     <Fragment>
@@ -63,9 +66,17 @@ const Navbar = ({ toggle }) => {
         <Link to='/contacts' className='dropdown-item pt-4'>
           Contact
         </Link>
-        <Link to='/signin' className='dropdown-item pt-4'>
+        <a
+          href='#!'
+          className='dropdown-item pt-4'
+          onClick={() => setShowAuthModal(true)}
+        >
           Sign In or Join
-        </Link>
+        </a>
+        <AuthModal
+          show={showAuthModal}
+          onHide={() => setShowAuthModal(false)}
+        />
       </div>
     </Fragment>
   );

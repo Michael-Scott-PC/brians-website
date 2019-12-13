@@ -43,6 +43,7 @@ const InquiryForm = ({ address, createInquiry }) => {
               type='text'
               placeholder={address}
               style={{ fontWeight: 'bold' }}
+              readOnly
             />
           </Form.Group>
 

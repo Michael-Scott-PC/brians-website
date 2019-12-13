@@ -12,3 +12,5 @@ export const POST_CONTACT = 'POST_CONTACT';
 export const ERROR_POST_CONTACT = 'ERROR_POST_CONTACT';
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const CREATE_USER = 'CREATE_USER';
+export const ERROR_CREATE_USER = 'ERROR_CREATE_USER';
