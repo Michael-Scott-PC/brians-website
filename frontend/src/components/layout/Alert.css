@@ -5,7 +5,8 @@
     width: 100%;
     z-index: 1000;
     top: 50%;
-    background-color: rgba(69, 160, 84, 0.74);
+    left: 0;
+    background-color: rgba(69, 160, 84, 0.85);
 }
 
 .alert-danger {
@@ -15,5 +16,6 @@
     width: 100%;
     z-index: 1000;
     top: 50%;
-    background-color: rgba(202, 78, 47, 0.74);
+    left: 0;
+    background-color: rgba(202, 78, 47, 0.85);
 }

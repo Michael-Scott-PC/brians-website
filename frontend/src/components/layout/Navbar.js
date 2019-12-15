@@ -1,10 +1,48 @@
 import './Navbar.css';
 import skyline from '../../img/navbar/ds_3x.png';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import AuthModal from '../forms/auth/AuthModal';
+import PropTypes from 'prop-types';
 
-const Navbar = ({ toggle }) => {
+import AuthModal from '../forms/auth/AuthModal';
+import { logout } from '../../actions/profile';
+// import history from '../../history';
+
+const Navbar = ({ toggle, authReducer: { loading, user }, logout }) => {
+  const renderAuthenticatedNav = () => {
+    return(
+      <Fragment>
+        <a
+          href='#!'
+          className='dropdown-item pt-4'
+        >
+          Welcome, {user.user.first_name}
+        </a>
+        <a
+        href='#!'
+        className='dropdown-item pt-4'
+        onClick={() => logout()}
+      >
+        Sign Out
+      </a> 
+    </Fragment>
+    )
+  };
+
+  const closeModal = () => {
+    setShowAuthModal(false);
+  }
+
+  const check = () => {
+    console.log(loading);
+    console.log(user);
+  };
+
+  // useEffect(() => {
+  //   check();
+  // })
+
   const [bar1, setBar1] = useState(false);
   const [bar2, setBar2] = useState(false);
   const [bar3, setBar3] = useState(false);
@@ -66,20 +104,35 @@ const Navbar = ({ toggle }) => {
         <Link to='/contacts' className='dropdown-item pt-4'>
           Contact
         </Link>
-        <a
+        {!user.jwt ? <a
           href='#!'
           className='dropdown-item pt-4'
           onClick={() => setShowAuthModal(true)}
         >
           Sign In or Join
-        </a>
+        </a> : renderAuthenticatedNav() }
+        {!user.jwt ? 
         <AuthModal
+          onEnter={check}
           show={showAuthModal}
           onHide={() => setShowAuthModal(false)}
-        />
+        /> : <AuthModal
+        onEnter={check}
+        show={!showAuthModal}
+        // onHide={() => setShowAuthModal(false)}
+      />}
       </div>
     </Fragment>
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  authReducer: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+  authReducer: state.authReducer,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

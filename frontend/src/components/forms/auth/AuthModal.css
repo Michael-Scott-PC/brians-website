@@ -1,9 +1,3 @@
-/* .auth-header {
-    padding-bottom: 0;
-    display: contents !important;
-    align-self: flex-end;
-} */
-
 .auth-header {
     border-bottom: none;
     padding-top: 0;
@@ -25,4 +19,8 @@
 .auth-nav-item {
     padding-right: 0;
     padding-left: 0;
+}
+
+.auth-text {
+    font-size: 1.75em;
 }

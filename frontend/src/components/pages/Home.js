@@ -7,10 +7,13 @@ import RecentListing from '../listings/RecentListing';
 import MortgageCalculator from '../calculators/MortgageCalculator';
 import Testimonials from '../customers/Testimonials';
 
+// import Alert from '../layout/Alert';
+
 const Home = () => {
   return (
     <Fragment>
       {/* <Navbar /> */}
+      {/* <Alert /> */}
       <Landing />
       <div className='rec-listings mortg-calc container-fluid'>
         <div className='row'>

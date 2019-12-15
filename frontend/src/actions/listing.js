@@ -14,7 +14,7 @@ export const getRecentListing = () => async dispatch => {
       type: GET_RECENT_LISTING,
       payload: res.data[0]
     });
-    console.log(res.data[0]);
+    // console.log(res.data[0]);
   } catch (error) {
     console.log(error);
   }

@@ -14,3 +14,6 @@ export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const CREATE_USER = 'CREATE_USER';
 export const ERROR_CREATE_USER = 'ERROR_CREATE_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+export const ERROR_LOGIN = 'ERROR_LOGIN';
+export const LOGOUT = 'LOGOUT';

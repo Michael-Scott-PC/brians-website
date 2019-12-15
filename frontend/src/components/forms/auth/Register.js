@@ -1,33 +1,35 @@
 import './Register.css';
 import React, { Fragment } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 // import PropTypes from 'prop-types'
 
-// import { createUser } from '../../../actions/profile';
+import { createUser } from '../../../actions/profile';
 import RegisterSchema from '../schemas/registerSchema';
 import Google from '../../../img/google/google2x.png';
 import Goog from '../../../img/google/goog2x.png';
 
-const Register = ({ createUser }) => {
+const Register = ({ createUser, style, setshowregister, check }) => {
   return (
     <Fragment>
       <Formik
         validationSchema={RegisterSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
-            // createUser(values);
+            createUser(values);
             setSubmitting(false);
-            resetForm(true);
+            check();
+            // resetForm(true);
           }, 400);
         }}
         initialValues={{
           first_name: '',
           last_name: '',
           email: '',
-          phone: '',
-          question: ''
+          username: '',
+          password: '',
+          password2: ''
         }}
       >
         {({
@@ -40,7 +42,13 @@ const Register = ({ createUser }) => {
           errors
         }) => (
           <Fragment>
-            <Form noValidate onSubmit={handleSubmit}>
+            <Form 
+              noValidate 
+              onSubmit={handleSubmit} 
+              className='register-modal-component'
+              style={{ display: `${style}`}}
+              onLoad={() => setshowregister('none')}
+              >
               <Row>
                 <Col className='col-8 mx-auto text-center'>
                   <Form.Group controlId='formGroupFirstName'>
@@ -109,22 +117,44 @@ const Register = ({ createUser }) => {
               </Row>
               <Row>
                 <Col className='col-8 mx-auto text-center'>
+                  <Form.Group controlId='formGroupEmail'>
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                      type='username'
+                      name='username'
+                      placeholder='Choose a username'
+                      className='text-center'
+                      value={values.username}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.username && !errors.username}
+                      isInvalid={touched.username && errors.username}
+                      required
+                    />
+                    {errors.username && touched.username ? (
+                      <p style={{ color: 'red' }}>{errors.username}</p>
+                    ) : null}
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col className='col-8 mx-auto text-center'>
                   <Form.Group controlId='formGroupPassword'>
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                       type='text'
-                      name='password1'
+                      name='password'
                       placeholder='enter password'
                       className='text-center'
-                      value={values.password1}
+                      value={values.password}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched.password1 && !errors.password1}
-                      isInvalid={touched.password1 && errors.password1}
+                      isValid={touched.password && !errors.password}
+                      isInvalid={touched.password && errors.password}
                       required
                     />
-                    {errors.password1 && touched.password1 ? (
-                      <p style={{ color: 'red' }}>{errors.password1}</p>
+                    {errors.password && touched.password ? (
+                      <p style={{ color: 'red' }}>{errors.password}</p>
                     ) : null}
                   </Form.Group>
                 </Col>
@@ -159,12 +189,12 @@ const Register = ({ createUser }) => {
                 </Col>
               </Row>
               <span className='divider mx-auto'></span>
-              <h1 className='text-center'>Or Sign In with Google</h1>
-              <Row>
+              <h2 className='text-center mt-3'>Or Register with Google</h2>
+              <Row className='my-3'>
                 <Col className='col-8 mx-auto text-center'>
-                  <button className='primary'>
-                    <Row>
-                      <Col>
+                  <button className='btn primary'>
+                    <Row className='g-sign-in-row my-1'>
+                      <Col className='g-icon-col'>
                         <div className='google-icon'>
                           <img
                             src={Google}
@@ -173,8 +203,8 @@ const Register = ({ createUser }) => {
                           />
                         </div>
                       </Col>
-                      <Col>
-                        <div className='google-name'>
+                      <Col className='g-name-col mr-3'>
+                        <div className='google-name mr-3'>
                           <img
                             src={Goog}
                             alt='google name'
@@ -196,4 +226,4 @@ const Register = ({ createUser }) => {
 
 // Register.propTypes = {}
 
-export default Register;
+export default connect(null, { createUser })(Register);

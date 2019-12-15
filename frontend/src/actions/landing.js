@@ -4,7 +4,7 @@ import { GET_LANDING_IMG } from './types';
 export const getLandingImage = () => async dispatch => {
   try {
     const res = await axios.get('/landings');
-    console.log(res);
+    // console.log(res);
     dispatch({
       type: GET_LANDING_IMG,
       payload: res.data[0]

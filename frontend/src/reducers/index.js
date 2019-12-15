@@ -6,7 +6,7 @@ import testimonialReducer from './testimonialReducer';
 import inquiryReducer from './inquiryReducer';
 import contactReducer from './contactReducer';
 import alertReducer from './alertReducer';
-import registerReducer from './registerReducer';
+import authReducer from './authReducer';
 
 export default combineReducers({
   realtorReducer,
@@ -16,5 +16,5 @@ export default combineReducers({
   inquiryReducer,
   contactReducer,
   alertReducer,
-  registerReducer
+  authReducer
 });
