@@ -38,7 +38,7 @@ export default yup.object({
     .required('Please enter your password')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-      'Must contain 8 characters, one uppercase, one lowercase, one number and one special case character.'
+      'Passwords must match.'
     )
     .oneOf([yup.ref('password'), null], 'Passwords must match')
 });

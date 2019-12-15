@@ -3,7 +3,9 @@ import {
   ERROR_CREATE_USER,
   LOGIN_USER,
   ERROR_LOGIN,
-  LOGOUT
+  LOGOUT,
+  GOOGLE_SIGN_IN,
+  SIGN_OUT
  } from './types';
 import axiosStrapi from '../api/axiosStrapi';
 
@@ -85,3 +87,16 @@ export const logout = () => dispatch => {
 
   history.push('/');
 }
+
+export const signIn = (res) => {
+  return {
+      type: GOOGLE_SIGN_IN,
+      payload: res
+  };
+};
+
+export const signOut = () => {
+  return {
+      type: SIGN_OUT
+  };
+};

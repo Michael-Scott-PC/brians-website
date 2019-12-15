@@ -6,7 +6,8 @@ export default yup.object({
         .email('Invalid email')
         .min(7, 'Email field is too short.')
         .max(40, 'Email field is too long.')
-        .required('Required'),
+        .required('Required')
+        ,
     password: yup
         .string()
         .required('Please Enter your password')

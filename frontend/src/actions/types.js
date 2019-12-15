@@ -17,3 +17,5 @@ export const ERROR_CREATE_USER = 'ERROR_CREATE_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const ERROR_LOGIN = 'ERROR_LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const GOOGLE_SIGN_IN = 'GOOGLE_SIGN_IN';
+export const SIGN_OUT = 'SIGN_OUT';

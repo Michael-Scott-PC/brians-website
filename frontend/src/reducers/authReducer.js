@@ -1,8 +1,9 @@
-import { CREATE_USER, ERROR_CREATE_USER, LOGIN_USER, ERROR_LOGIN, LOGOUT } from '../actions/types';
+import { CREATE_USER, ERROR_CREATE_USER, LOGIN_USER, ERROR_LOGIN, LOGOUT, GOOGLE_SIGN_IN } from '../actions/types';
 
 const initialState = {
   jwt: null,
   user: {},
+  googleUser: {},
   confirmed: false,
   loading: true,
   error: {}
@@ -21,6 +22,11 @@ export default function(state = initialState, action) {
         confirmed: payload.user.confirmed,
         loading: false
       };
+    case GOOGLE_SIGN_IN:
+      return {
+        ...state,
+        googleUser: payload
+      }
     case ERROR_CREATE_USER:
     case ERROR_LOGIN:
       return {
@@ -32,6 +38,7 @@ export default function(state = initialState, action) {
       return {
         jwt: null,
         user: {},
+        googleUser: {},
         confirmed: false,
         loading: false
       }

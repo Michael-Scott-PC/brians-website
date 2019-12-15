@@ -6,11 +6,12 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
 import LoginSchema from '../schemas/loginSchema';
+import GoogleAuth from './GoogleAuth';
 
-import Google from '../../../img/google/google2x.png';
-import Goog from '../../../img/google/goog2x.png';
+// import Google from '../../../img/google/google2x.png';
+// import Goog from '../../../img/google/goog2x.png';
 
-import { loginUser } from '../../../actions/profile';
+import { loginUser, signIn } from '../../../actions/profile';
 
 const Login = ({ style, setshowlogin, loginUser }) => {
   return (
@@ -98,10 +99,14 @@ const Login = ({ style, setshowlogin, loginUser }) => {
                 </Col>
               </Row>
               <span className='divider mx-auto'></span>
-              <h2 className='text-center mt-3'>Or Sign in with Google</h2>
+              <GoogleAuth />
+          </Form>
+          {/* <GoogleAuth /> */}
+          {/* <h2 className='text-center mt-3'>Or Sign in with Google</h2>
               <Row className='my-3'>
                 <Col className='col-8 mx-auto text-center'>
                   <button className='btn primary'>
+                      
                     <Row className='g-sign-in-row my-1'>
                       <Col className='g-icon-col'>
                         <div className='google-icon'>
@@ -122,10 +127,10 @@ const Login = ({ style, setshowlogin, loginUser }) => {
                         </div>
                       </Col>
                     </Row>
+
                   </button>
                 </Col>
-              </Row>
-          </Form>
+              </Row> */}
           </Fragment>
           )
         }
@@ -143,4 +148,4 @@ const mapStateToProps = state => ({
   authReducer: state.authReducer
 })
 
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(mapStateToProps, { loginUser, signIn })(Login);

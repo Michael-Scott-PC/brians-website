@@ -3,45 +3,93 @@ import skyline from '../../img/navbar/ds_3x.png';
 import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { GoogleLogout } from 'react-google-login';
 import PropTypes from 'prop-types';
 
 import AuthModal from '../forms/auth/AuthModal';
 import { logout } from '../../actions/profile';
 // import history from '../../history';
 
-const Navbar = ({ toggle, authReducer: { loading, user }, logout }) => {
+const Navbar = ({ toggle, authReducer: { loading, user, googleUser }, logout }) => {
+  const logoutRes = () => {
+    logout();
+  }
+
   const renderAuthenticatedNav = () => {
-    return(
-      <Fragment>
-        <a
+    console.log('renderAuthenticatedNav ran - line 14.');
+    if (user.jwt) {
+      return(
+        <Fragment>
+          <a
+            href='#!'
+            className='dropdown-item pt-4'
+          >
+            Welcome, {user.user.first_name}
+          </a>
+          <a
           href='#!'
           className='dropdown-item pt-4'
+          onClick={() => logout()}
         >
-          Welcome, {user.user.first_name}
-        </a>
-        <a
-        href='#!'
-        className='dropdown-item pt-4'
-        onClick={() => logout()}
-      >
-        Sign Out
-      </a> 
-    </Fragment>
-    )
+          Sign Out
+        </a> 
+      </Fragment>
+      )
+      }
+    if (googleUser.profileObj) {
+      return(
+        <Fragment>
+          <a
+            href='#!'
+            className='dropdown-item pt-4'
+          >
+            Welcome, {googleUser.profileObj.givenName}
+          </a>
+          <GoogleLogout
+                clientId="1093539628095-vcrooulbub3vppi5mc0bglp5gkb41o95.apps.googleusercontent.com"
+                buttonText="Logout"
+                onLogoutSuccess={logoutRes}
+                className='google-logout'
+                >
+            </GoogleLogout>
+      </Fragment>
+      )
+    }
   };
 
-  const closeModal = () => {
-    setShowAuthModal(false);
-  }
+  // const renderGoogleAuthenticatedNav = () => {
+  //   return(
+  //     <Fragment>
+  //       <a
+  //         href='#!'
+  //         className='dropdown-item pt-4'
+  //       >
+  //         Welcome, {googleUser.profileObj.givenName}
+  //       </a>
+  //       <a
+  //       href='#!'
+  //       className='dropdown-item pt-4'
+  //       onClick={() => logout()}
+  //     >
+  //       Sign Out
+  //     </a> 
+  //   </Fragment>
+  //   )
+  // };
+
+  // const closeModal = () => {
+  //   setShowAuthModal(false);
+  // }
 
   const check = () => {
     console.log(loading);
     console.log(user);
+    console.log(googleUser);
   };
 
-  // useEffect(() => {
-  //   check();
-  // })
+  useEffect(() => {
+    check();
+  })
 
   const [bar1, setBar1] = useState(false);
   const [bar2, setBar2] = useState(false);
@@ -104,14 +152,14 @@ const Navbar = ({ toggle, authReducer: { loading, user }, logout }) => {
         <Link to='/contacts' className='dropdown-item pt-4'>
           Contact
         </Link>
-        {!user.jwt ? <a
+        {!user.jwt && !googleUser.profileObj ? <a
           href='#!'
           className='dropdown-item pt-4'
           onClick={() => setShowAuthModal(true)}
         >
           Sign In or Join
         </a> : renderAuthenticatedNav() }
-        {!user.jwt ? 
+        {!user.jwt && !googleUser.profileObj ? 
         <AuthModal
           onEnter={check}
           show={showAuthModal}

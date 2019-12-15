@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import axiosSecondServer from '../../api/axiosSecondServer';
+import React from 'react';
+// import axiosSecondServer from '../../api/axiosSecondServer';
 
 const NewsEvents = () => {
     // const getCurrentNews = async () => {

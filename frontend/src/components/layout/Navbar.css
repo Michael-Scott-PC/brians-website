@@ -60,6 +60,15 @@
     font-weight: bold;
 }
 
+.google-logout {
+    width: 100%;
+    justify-content: center;
+}
+
+.google-logout>span {
+    color: #000000;
+}
+
 @media (min-width: 576px) {
     .navbar {
         display: none;
