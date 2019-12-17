@@ -88,7 +88,7 @@ plugins/users-permissions/documentation
 plugins/upload/documentation
 plugins/email/documentation
 documentation/
-config/environments
+config/environments/*/database.json
 
 ############################
 # Node.js
@@ -109,3 +109,5 @@ node_modules
 
 testApp
 coverage
+
+package-lock.json
