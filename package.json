@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application.",
-  "main": "./server.js",
+  "main": "./backend/server.js",
   "scripts": {
     "web": "cd frontend && npm i && cd ../backend && npm i && cd ../secondserver && npm i",
     "setup": "cd admin && npm run setup",
