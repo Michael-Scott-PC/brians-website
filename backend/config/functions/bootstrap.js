@@ -8,6 +8,9 @@
  * run jobs, or perform some special logic.
  */
 
+// Load environment variables
+require('dotenv').config({ path: require('find-config')('.env') });
+
 module.exports = cb => {
   cb();
 };
