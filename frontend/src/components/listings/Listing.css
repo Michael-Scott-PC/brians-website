@@ -1,10 +1,11 @@
 .card {
-    background-color: #676F97;
+    /* background-color: #676F97; */
     border-radius: 10px;
 }
 
 .listing-card {
     border: 0;
+    background-color: #676F97;
 }
 
 .card-img-overlay {

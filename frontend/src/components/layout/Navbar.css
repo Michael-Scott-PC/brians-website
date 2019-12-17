@@ -58,6 +58,7 @@
     height: 4em;
     font-size: 1.3em;
     font-weight: bold;
+    padding: 0;
 }
 
 .google-logout {
@@ -82,6 +83,9 @@
     .dropdown-item {
         display: inline-block;
         height: 70px;
+        background: none;
+    }
+    div#navbarToggleExternalContent {
         background: linear-gradient(rgb(0, 0, 0, 1), rgba(0, 0, 0, 0.4) 100%);
     }
     a.dropdown-item {

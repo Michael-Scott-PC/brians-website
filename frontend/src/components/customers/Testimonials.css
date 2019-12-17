@@ -1,7 +1,7 @@
 div.testimonials.row {
     background-image: url(../../img/testimonial/purple.png);
     background-size: cover;
-    height: 50vh;
+    height: 80vh;
     /* display: unset; */
 }
 

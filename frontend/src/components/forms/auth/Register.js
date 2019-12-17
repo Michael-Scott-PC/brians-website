@@ -10,6 +10,8 @@ import RegisterSchema from '../schemas/registerSchema';
 import Google from '../../../img/google/google2x.png';
 import Goog from '../../../img/google/goog2x.png';
 
+import GoogleAuth from './GoogleAuth';
+
 const Register = ({ createUser, style, setshowregister, check }) => {
   return (
     <Fragment>
@@ -42,13 +44,13 @@ const Register = ({ createUser, style, setshowregister, check }) => {
           errors
         }) => (
           <Fragment>
-            <Form 
-              noValidate 
-              onSubmit={handleSubmit} 
+            <Form
+              noValidate
+              onSubmit={handleSubmit}
               className='register-modal-component'
-              style={{ display: `${style}`}}
+              style={{ display: `${style}` }}
               onLoad={() => setshowregister('none')}
-              >
+            >
               <Row>
                 <Col className='col-8 mx-auto text-center'>
                   <Form.Group controlId='formGroupFirstName'>
@@ -190,7 +192,7 @@ const Register = ({ createUser, style, setshowregister, check }) => {
               </Row>
               <span className='divider mx-auto'></span>
               <h2 className='text-center mt-3'>Or Register with Google</h2>
-              <Row className='my-3'>
+              {/* <Row className='my-3'>
                 <Col className='col-8 mx-auto text-center'>
                   <button className='btn primary'>
                     <Row className='g-sign-in-row my-1'>
@@ -215,7 +217,8 @@ const Register = ({ createUser, style, setshowregister, check }) => {
                     </Row>
                   </button>
                 </Col>
-              </Row>
+              </Row> */}
+              <GoogleAuth />
             </Form>
           </Fragment>
         )}

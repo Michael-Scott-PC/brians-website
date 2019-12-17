@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/googleusers",
+      "handler": "Googleuser.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/googleusers/count",
+      "handler": "Googleuser.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/googleusers/:_id",
+      "handler": "Googleuser.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/googleusers",
+      "handler": "Googleuser.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/googleusers/:_id",
+      "handler": "Googleuser.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/googleusers/:_id",
+      "handler": "Googleuser.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

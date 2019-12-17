@@ -40,14 +40,14 @@ const Login = ({ style, setshowlogin, loginUser }) => {
           errors
         }) => (
           <Fragment>
-            <Form 
-              noValidate 
+            <Form
+              noValidate
               onSubmit={handleSubmit}
               onLoad={() => setshowlogin('block')}
               className='login-modal-component'
-              style={{ display: `${style}`}}
-              >
-                <Row>
+              style={{ display: `${style}` }}
+            >
+              <Row>
                 <Col className='col-8 mx-auto text-center'>
                   <Form.Group controlId='formGroupEmail'>
                     <Form.Label>Email</Form.Label>
@@ -99,41 +99,11 @@ const Login = ({ style, setshowlogin, loginUser }) => {
                 </Col>
               </Row>
               <span className='divider mx-auto'></span>
+              <h2 className='text-center mt-3'>Or Sign in with Google</h2>
               <GoogleAuth />
-          </Form>
-          {/* <GoogleAuth /> */}
-          {/* <h2 className='text-center mt-3'>Or Sign in with Google</h2>
-              <Row className='my-3'>
-                <Col className='col-8 mx-auto text-center'>
-                  <button className='btn primary'>
-                      
-                    <Row className='g-sign-in-row my-1'>
-                      <Col className='g-icon-col'>
-                        <div className='google-icon'>
-                          <img
-                            src={Google}
-                            alt='google icon'
-                            style={{ width: '35%', height: 'auto' }}
-                          />
-                        </div>
-                      </Col>
-                      <Col className='g-name-col mr-3'>
-                        <div className='google-name mr-3'>
-                          <img
-                            src={Goog}
-                            alt='google name'
-                            style={{ width: '100%', height: 'auto' }}
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-
-                  </button>
-                </Col>
-              </Row> */}
+            </Form>
           </Fragment>
-          )
-        }
+        )}
       </Formik>
     </Fragment>
   );
@@ -142,10 +112,10 @@ const Login = ({ style, setshowlogin, loginUser }) => {
 Login.propTypes = {
   authReducer: PropTypes.object.isRequired,
   loginUser: PropTypes.func.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   authReducer: state.authReducer
-})
+});
 
 export default connect(mapStateToProps, { loginUser, signIn })(Login);

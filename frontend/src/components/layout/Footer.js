@@ -28,28 +28,28 @@ const Footer = ({ getBrianInfo, brian: { brian } }) => {
             <div className='col-sm-12 mt-4'>
               {linkedin && (
                 <a href={`${linkedin}`}>
-                  <i className='fab fa-linkedin-in mr-2'></i>
+                  <i className='fab fa-linkedin-in mr-3'></i>
                 </a>
               )}
               {facebook && (
                 <a href={`${facebook}`}>
-                  <i className='fab fa-facebook-f mr-2'></i>
+                  <i className='fab fa-facebook-f mr-3'></i>
                 </a>
               )}
               {twitter && (
                 <a href={`${twitter}`}>
-                  <i className='fab fa-twitter mr-2'></i>
+                  <i className='fab fa-twitter mr-3'></i>
                 </a>
               )}
               {instagram && (
                 <a href={`${instagram}`}>
-                  <i className='fab fa-instagram mr-2'></i>
+                  <i className='fab fa-instagram'></i>
                 </a>
               )}
             </div>
           </div>
           {email && (
-            <div className='row'>
+            <div className='row py-1'>
               <div className='col-sm-12'>
                 <a href='http://' target='_blank' rel='noopener noreferrer'>
                   <p className='text-center mb-1 contact-info'>
@@ -61,7 +61,7 @@ const Footer = ({ getBrianInfo, brian: { brian } }) => {
             </div>
           )}
           {office_phone && (
-            <div className='row'>
+            <div className='row py-1'>
               <div className='col-sm-12'>
                 <a href='http://' target='_blank' rel='noopener noreferrer'>
                   <p className='text-center mb-1 contact-info'>

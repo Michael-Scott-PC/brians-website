@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "googleuser",
+  "info": {
+    "name": "googleuser",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "familyName": {
+      "type": "string"
+    }
+  }
+}

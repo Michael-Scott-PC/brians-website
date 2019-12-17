@@ -37,11 +37,11 @@ const RecentListing = ({
 
   return (
     <Fragment>
-      <div className='recent-listing col-12 col-md-8 my-5'>
+      <div className='recent-listing col-12 col-md-6 my-5'>
         <div className='recent-listing card-header text-center mx-3'>
           <h3>Most Recent Listing</h3>
         </div>
-        <div className='card mx-3 text-center'>
+        <div className='card recent-listing-card mx-3 text-center'>
           <div className='img-hover-zoom'>
             <img
               className='card-image-top img-fluid cover-photo'

@@ -71,7 +71,7 @@ const PicModal = props => {
           </div>
         </div>
       </div>
-      <ModalBody>
+      <ModalBody className='pic-modal-body'>
         <div className='container large-photo-container'>
           <div className='row large-photo-row'>
             <img
