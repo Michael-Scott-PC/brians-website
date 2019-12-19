@@ -51,13 +51,11 @@
     },
     "first_name": {
       "maxLength": 30,
-      "required": true,
       "minLength": 2,
       "type": "string"
     },
     "last_name": {
       "maxLength": 30,
-      "required": true,
       "minLength": 2,
       "type": "string"
     }
