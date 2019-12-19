@@ -7,7 +7,7 @@
     "start:backend": "npm run start --prefix backend",
     "start:frontend": "npm run start --prefix frontend",
     "build": "run-p build:backend build:frontend",
-    "build:backend": "cd backend && npm run build",
+    "build:backend": "cd backend && npm run setup",
     "build:frontend": "cd frontend && npm run build"
   },
   "devDependencies": {
