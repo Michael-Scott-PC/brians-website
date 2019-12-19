@@ -7,8 +7,6 @@ import { Formik } from 'formik';
 
 import { createUser } from '../../../actions/profile';
 import RegisterSchema from '../schemas/registerSchema';
-import Google from '../../../img/google/google2x.png';
-import Goog from '../../../img/google/goog2x.png';
 
 import GoogleAuth from './GoogleAuth';
 
@@ -192,32 +190,6 @@ const Register = ({ createUser, style, setshowregister, check }) => {
               </Row>
               <span className='divider mx-auto'></span>
               <h2 className='text-center mt-3'>Or Register with Google</h2>
-              {/* <Row className='my-3'>
-                <Col className='col-8 mx-auto text-center'>
-                  <button className='btn primary'>
-                    <Row className='g-sign-in-row my-1'>
-                      <Col className='g-icon-col'>
-                        <div className='google-icon'>
-                          <img
-                            src={Google}
-                            alt='google icon'
-                            style={{ width: '35%', height: 'auto' }}
-                          />
-                        </div>
-                      </Col>
-                      <Col className='g-name-col mr-3'>
-                        <div className='google-name mr-3'>
-                          <img
-                            src={Goog}
-                            alt='google name'
-                            style={{ width: '100%', height: 'auto' }}
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-                  </button>
-                </Col>
-              </Row> */}
               <GoogleAuth />
             </Form>
           </Fragment>
