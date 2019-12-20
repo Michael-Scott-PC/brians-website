@@ -4,7 +4,7 @@
     "default": {
       "connector": "strapi-hook-mongoose",
       "settings": {
-        "client": "mongodb",
+        "client": "mongo",
         "host": "127.0.0.1",
         "port": "27017",
         "database": "brians-admin-prod",
