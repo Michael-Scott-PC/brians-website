@@ -9,7 +9,7 @@
  */
 
 // Load environment variables
-require('dotenv').config({ path: require('find-config')('.env') });
+// require('dotenv').config({ path: require('find-config')('.env') });
 
 module.exports = cb => {
   cb();
