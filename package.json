@@ -8,7 +8,7 @@
     "start:frontend": "npm run start --prefix frontend",
     "build": "run-p build:backend build:frontend",
     "build:backend": "cd backend && npm run setup",
-    "build:frontend": "cd frontend && npm react-scripts build"
+    "build:frontend": "cd frontend && npm run build"
   },
   "devDependencies": {
     "npm-run-all": "^4.0.2"
