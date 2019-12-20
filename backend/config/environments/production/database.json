@@ -12,7 +12,8 @@
         "password": ""
       },
       "options": {
-        "ssl": true
+        "ssl": true,
+        "debug": true
       }
     }
   }
