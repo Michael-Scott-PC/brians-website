@@ -32,7 +32,7 @@
   "bugs": {
     "url": "https://github.com/strapi/strapi-admin/issues"
   },
-  "bundleDependencies": false,
+  "bundleDependencies": [],
   "dependencies": {
     "intl": "^1.2.5",
     "react-ga": "^2.4.1",
