@@ -1,5 +1,5 @@
 {
-  "host": "homessoldbybrian.com",
+  "host": "167.71.93.190",
   "port": "${process.env.NODE_PORT || 1337}",
   "production": true,
   "proxy": {
