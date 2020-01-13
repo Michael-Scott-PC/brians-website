@@ -1,4 +1,7 @@
 # brians-website
+
+# This repo is outdated (new repo is bv-website) but kept for reference.
+
 This is a website for a realtor, Brian, who is trying to increase his online presence.  Technologies that will be used:
 * React for the frontend
 * MongoDB for the database
